@@ -1,0 +1,495 @@
+/* ──────────────────────────────────────────────────────────────
+   Slides 01–05: Cover, Thesis, Problem, Rework Loop, Validation
+   ────────────────────────────────────────────────────────────── */
+
+const TOTAL = 19;
+
+/* ============ 01 COVER ============ */
+function SlideCover({ index }) {
+  const activeIdx = useActiveSlideIndex();
+  const isActive = activeIdx === index;
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    if (isActive) {
+      ref.current.removeAttribute('data-active');
+      void ref.current.offsetWidth;
+      requestAnimationFrame(() => {
+        if (ref.current && activeIdx === index) ref.current.setAttribute('data-active', '');
+      });
+    } else {
+      ref.current.removeAttribute('data-active');
+    }
+  }, [isActive, activeIdx, index]);
+
+  return (
+    <section ref={ref} className="slide dark" data-label="Cover">
+      {/* Top label */}
+      <div style={{ position: 'absolute', top: 56, left: 120, right: 120, display: 'flex', justifyContent: 'space-between' }}>
+        <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.24em', '--reveal-delay': '100ms' }}>
+          <span style={{ color: 'var(--amber)' }}>●</span>&nbsp;&nbsp;CUNIFORM&nbsp;&nbsp;—&nbsp;&nbsp;PITCH 2026
+        </div>
+        <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.24em', '--reveal-delay': '100ms', opacity: 0.6 }}>
+          CONFIDENTIAL
+        </div>
+      </div>
+
+      {/* Hero wordmark */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        gap: 40,
+      }}>
+        <div style={{
+          position: 'relative',
+          padding: '0 40px',
+        }}>
+          <span data-reveal style={{ display: 'inline-block', '--reveal-delay': '300ms', '--reveal-y': '80px' }}>
+            <img
+              src="assets/Cuniform.svg"
+              alt="Cuniform"
+              style={{ width: 1400, height: 'auto', display: 'block' }}
+            />
+          </span>
+        </div>
+
+        <div
+          data-reveal
+          style={{
+            fontSize: 42,
+            letterSpacing: '-0.01em',
+            maxWidth: 1100,
+            textAlign: 'center',
+            lineHeight: 1.25,
+            color: 'var(--bone-2)',
+            '--reveal-delay': '1400ms',
+            fontWeight: 300,
+          }}
+        >
+          Real-time code compliance for<br/>the people who design buildings.
+        </div>
+
+        <div
+          data-reveal
+          className="mono"
+          style={{
+            marginTop: 40,
+            fontSize: 15,
+            letterSpacing: '0.3em',
+            color: 'var(--amber)',
+            '--reveal-delay': '1800ms',
+          }}
+        >
+          —&nbsp;&nbsp;SEED ROUND · 2026&nbsp;&nbsp;—
+        </div>
+      </div>
+
+      {/* Bottom (cover uses a bespoke footer, not the editorial running footer) */}
+      <div className="cover-footer">
+        <span>Yatco · Gallatin · Somani</span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
+          <Logomark size={20} />
+          &nbsp;Cuniform Tech™
+        </span>
+      </div>
+
+      <div className="grain" />
+    </section>
+  );
+}
+
+/* Small mark — portfolio logomark */
+function Logomark({ size = 28 }) {
+  return (
+    <img
+      src="assets/Logomark.svg"
+      width={size}
+      height={size}
+      alt="Cuniform logomark"
+      style={{ display: 'inline-block', verticalAlign: 'middle' }}
+    />
+  );
+}
+
+/* ============ 02 THESIS ============ */
+function SlideThesis({ index }) {
+  return (
+    <Slide index={index} total={TOTAL} section="01 · Thesis" label="Thesis" tone="dark">
+      <div style={{
+        position: 'absolute', inset: 0,
+        display: 'grid', gridTemplateColumns: '1.15fr 1fr',
+        padding: '160px 120px 120px',
+        alignItems: 'center',
+        gap: 100,
+      }}>
+        {/* Left: big statement */}
+        <div>
+          <div
+            className="mono"
+            data-reveal
+            style={{ fontSize: 16, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 40 }}
+          >
+            THE CATEGORY TRUTH
+          </div>
+
+          <div className="serif" style={{ fontSize: 112, lineHeight: 0.98, letterSpacing: '-0.02em', fontStyle: 'italic' }}>
+            <div data-wipe style={{ '--reveal-delay': '200ms' }}>AEC firms</div>
+            <div data-wipe style={{ '--reveal-delay': '500ms' }}>don't sell drawings.</div>
+            <div data-wipe style={{ '--reveal-delay': '900ms', color: 'var(--amber)' }}>They sell time.</div>
+          </div>
+
+          <div
+            data-reveal
+            style={{
+              marginTop: 64,
+              fontSize: 32,
+              lineHeight: 1.5,
+              color: 'var(--bone-2)',
+              maxWidth: 700,
+              '--reveal-delay': '1500ms',
+            }}
+          >
+            The faster an architect moves from brief to permit, the higher the margin.
+            Compliance rework is the single biggest tax on that time.
+          </div>
+        </div>
+
+        {/* Right: stacked figure — time arbitrage */}
+        <TimeArbitrageFigure />
+      </div>
+    </Slide>
+  );
+}
+
+function TimeArbitrageFigure() {
+  return (
+    <div style={{ position: 'relative', height: 720, width: '100%' }}>
+      {/* Bar stack */}
+      <svg viewBox="0 0 600 720" style={{ width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="barFade" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stopColor="#F2EDE4" stopOpacity="0.15" />
+            <stop offset="1" stopColor="#F2EDE4" stopOpacity="0.02" />
+          </linearGradient>
+        </defs>
+
+        {/* Column: fixed project fee */}
+        <g>
+          <rect x="80" y="80" width="180" height="560" fill="url(#barFade)" stroke="rgba(242,237,228,0.25)" />
+          <text x="170" y="60" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="16" letterSpacing="3" fill="#F2EDE4" opacity="0.55">FEE</text>
+          <text x="170" y="660" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="14" letterSpacing="2" fill="#F2EDE4" opacity="0.4">FIXED</text>
+        </g>
+
+        {/* Column: time burned */}
+        <g>
+          <rect x="340" y="80" width="180" height="560" fill="none" stroke="rgba(242,237,228,0.25)" />
+          {/* Overhead */}
+          <rect
+            x="340" y="80" width="180" height="200"
+            fill="#F2EDE4" opacity="0.15"
+            data-reveal style={{ '--reveal-delay': '1200ms', '--reveal-y': '-40px' }}
+          />
+          <text x="430" y="180" textAnchor="middle" fontFamily="Instrument Serif" fontSize="22" fontStyle="italic" fill="#F2EDE4"
+                data-reveal style={{ '--reveal-delay': '1400ms' }}>
+            overhead
+          </text>
+
+          {/* Compliance — highlighted amber */}
+          <rect
+            x="340" y="280" width="180" height="220"
+            fill="#DC2626" opacity="0.9"
+            data-reveal style={{ '--reveal-delay': '1600ms', '--reveal-y': '40px' }}
+          />
+          <text x="430" y="400" textAnchor="middle" fontFamily="Instrument Serif" fontSize="34" fontStyle="italic" fill="#0A0A0A"
+                data-reveal style={{ '--reveal-delay': '1800ms' }}>
+            rework
+          </text>
+
+          {/* Margin */}
+          <rect
+            x="340" y="500" width="180" height="140"
+            fill="#F2EDE4" opacity="0.85"
+            data-reveal style={{ '--reveal-delay': '2000ms', '--reveal-y': '80px' }}
+          />
+          <text x="430" y="580" textAnchor="middle" fontFamily="Instrument Serif" fontSize="26" fontStyle="italic" fill="#0A0A0A"
+                data-reveal style={{ '--reveal-delay': '2200ms' }}>
+            margin
+          </text>
+
+          <text x="430" y="60" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="16" letterSpacing="3" fill="#F2EDE4" opacity="0.55">TIME</text>
+          <text x="430" y="660" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="14" letterSpacing="2" fill="#F2EDE4" opacity="0.4">VARIABLE</text>
+        </g>
+
+        {/* Connector brace */}
+        <g data-reveal style={{ '--reveal-delay': '2400ms' }}>
+          <path d="M 270 280 L 325 280 L 325 500 L 270 500" stroke="#DC2626" strokeWidth="1.5" fill="none" />
+          <text x="305" y="395" textAnchor="end" fontFamily="Instrument Serif" fontStyle="italic" fontSize="20" fill="#DC2626">
+            the tax
+          </text>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+/* ============ 03 PROBLEM ============ */
+function SlideProblem({ index }) {
+  const activeIdx = useActiveSlideIndex();
+  const isActive = activeIdx === index;
+
+  return (
+    <Slide index={index} total={TOTAL} section="02 · Problem" label="Problem" tone="dark">
+      <div style={{ position: 'absolute', inset: 0, padding: '180px 120px 140px' }}>
+        <div
+          className="mono"
+          data-reveal
+          style={{ fontSize: 16, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 30 }}
+        >
+          ANNUAL US MARGIN BURN — CODE COMPLIANCE REWORK
+        </div>
+
+        {/* Mega figure */}
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 60 }}>
+          <div
+            className="serif"
+            style={{
+              fontSize: 460,
+              lineHeight: 0.9,
+              letterSpacing: '-0.05em',
+              fontStyle: 'italic',
+              fontWeight: 400,
+              padding: '0 20px 0 0',
+            }}
+          >
+            <span data-reveal style={{ '--reveal-delay': '400ms', '--reveal-y': '80px' }}>$</span>
+            <span data-reveal style={{ '--reveal-delay': '600ms', '--reveal-y': '80px' }}>
+              <Counter to={15} duration={1800} delay={600} active={isActive} format={(n) => Math.round(n)} />
+            </span>
+            <span data-reveal style={{ '--reveal-delay': '1400ms', '--reveal-y': '80px', color: 'var(--amber)' }}>B</span>
+          </div>
+
+          <div style={{ paddingBottom: 80 }}>
+            <div
+              className="mono"
+              data-reveal
+              style={{ fontSize: 18, letterSpacing: '0.3em', opacity: 0.5, '--reveal-delay': '1600ms' }}
+            >
+              ANNUAL · US
+            </div>
+          </div>
+        </div>
+
+        <div
+          data-reveal
+          style={{
+            marginTop: 60,
+            fontSize: 40,
+            lineHeight: 1.35,
+            maxWidth: 1300,
+            color: 'var(--bone)',
+            '--reveal-delay': '1800ms',
+            fontWeight: 300,
+          }}
+        >
+          Every compliance rejection costs a firm{' '}
+          <span style={{ color: 'var(--amber)', fontWeight: 500 }}>$20K–$30K</span>{' '}
+          in rework and a{' '}
+          <span className="serif" style={{ fontStyle: 'italic', fontWeight: 400 }}>delayed</span>{' '}
+          permit.
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+/* ============ 04 REWORK LOOP ============ */
+function SlideReworkLoop({ index }) {
+  const steps = [
+    { label: 'Design', sub: 'weeks of drafting' },
+    { label: 'Submit', sub: 'package to jurisdiction' },
+    { label: 'Wait', sub: '4–8 weeks' },
+    { label: 'Reject', sub: 'cited violations' },
+    { label: 'Rework', sub: 'redraw, re-coordinate' },
+    { label: 'Resubmit', sub: 'back in the queue' },
+  ];
+
+  return (
+    <Slide index={index} total={TOTAL} section="03 · The Loop" label="The Rework Loop" tone="dark">
+      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 32, marginBottom: 28 }}>
+          <h2 className="serif" style={{
+            fontSize: 120, lineHeight: 1, letterSpacing: '-0.02em',
+            fontStyle: 'italic', margin: 0,
+          }}>
+            <span data-wipe style={{ '--reveal-delay': '200ms' }}>A six-step loop,</span>
+            <br />
+            <span data-wipe style={{ '--reveal-delay': '600ms', color: 'var(--amber)' }}>designed to burn time.</span>
+          </h2>
+        </div>
+
+        {/* 6 steps connected by arrow path */}
+        <div style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', marginTop: 80 }}>
+          {/* Connecting path behind */}
+          <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+               viewBox="0 0 1680 400" preserveAspectRatio="none">
+            <path
+              d="M 80 200 L 1600 200"
+              stroke="var(--amber)" strokeWidth="2" fill="none"
+              strokeDasharray="8 10"
+              data-draw style={{ '--draw-len': 1600, '--reveal-delay': '1000ms' }}
+            />
+            {/* Loop back arc */}
+            <path
+              d="M 1600 200 Q 1680 200 1680 280 Q 1680 380 1600 380 L 80 380 Q 0 380 0 280 Q 0 200 80 200"
+              stroke="var(--amber)" strokeWidth="2" fill="none" strokeDasharray="8 10"
+              opacity="0.5"
+              data-draw style={{ '--draw-len': 3400, '--reveal-delay': '2400ms' }}
+            />
+          </svg>
+
+          {steps.map((step, i) => (
+            <div
+              key={i}
+              data-reveal
+              style={{
+                flex: 1,
+                display: 'flex', flexDirection: 'column', alignItems: 'center',
+                position: 'relative', zIndex: 2,
+                '--reveal-delay': `${1100 + i * 200}ms`,
+              }}
+            >
+              <div style={{
+                width: 24, height: 24, borderRadius: '50%',
+                background: i === 3 ? 'var(--amber)' : 'var(--ink)',
+                border: `2px solid var(--amber)`,
+                marginBottom: 28,
+              }} />
+              <div className="serif" style={{
+                fontSize: 54, fontStyle: 'italic', letterSpacing: '-0.01em',
+                color: i === 3 ? 'var(--amber)' : 'var(--bone)',
+              }}>
+                {step.label}
+              </div>
+              <div style={{
+                marginTop: 12, fontSize: 20,
+                color: 'var(--bone-2)', opacity: 0.65,
+                textAlign: 'center', maxWidth: 180, lineHeight: 1.3,
+              }}>
+                {step.sub}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          data-reveal
+          style={{
+            marginTop: 60,
+            fontSize: 28,
+            color: 'var(--bone-2)',
+            opacity: 0.75,
+            '--reveal-delay': '2800ms',
+            fontWeight: 300,
+            maxWidth: 1400,
+          }}
+        >
+          Compliance isn't checked until <em className="serif" style={{ color: 'var(--amber)', fontStyle: 'italic', fontWeight: 400 }}>after</em> the design is done.
+          Every rejection sends the whole package back to step one.
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+/* ============ 05 VALIDATION ============ */
+function SlideValidation({ index }) {
+  const activeIdx = useActiveSlideIndex();
+  const isActive = activeIdx === index;
+
+  const quotes = [
+    '"The tool would have to be quickly verified for accuracy."',
+    '"Liability implications mean it must be close to 100% accurate."',
+    '"Codes like the IBC change regularly — it has to keep up."',
+    '"Data security. We work under NDA for most clients."',
+    '"Must have judgment. Like an architect with decades of experience."',
+  ];
+
+  return (
+    <Slide index={index} total={TOTAL} section="04 · Validation" label="Validation" tone="dark">
+      <div style={{
+        position: 'absolute', inset: 0,
+        display: 'grid', gridTemplateColumns: '1.2fr 1fr',
+        padding: '160px 120px 140px',
+        gap: 80,
+      }}>
+        <div>
+          <div className="mono" data-reveal style={{ fontSize: 16, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 32 }}>
+            WE ASKED 40+ ARCHITECTS & DECISION-MAKERS
+          </div>
+
+          <div className="serif" style={{ fontSize: 130, lineHeight: 0.95, letterSpacing: '-0.02em', fontStyle: 'italic' }}>
+            <div data-wipe style={{ '--reveal-delay': '200ms' }}>
+              <Counter to={72} duration={1400} delay={300} active={isActive} format={(n) => Math.round(n)} suffix="%" />
+            </div>
+            <div data-reveal style={{ '--reveal-delay': '800ms', fontSize: 64, marginTop: 24, color: 'var(--bone-2)' }}>
+              want this tool.
+            </div>
+            <div data-reveal style={{ '--reveal-delay': '1200ms', fontSize: 48, marginTop: 12, color: 'var(--bone-2)', opacity: 0.7 }}>
+              48% say <em style={{ color: 'var(--amber)' }}>very useful.</em>
+            </div>
+          </div>
+
+          <div
+            data-reveal
+            style={{
+              marginTop: 70, paddingTop: 40,
+              borderTop: '1px solid rgba(242,237,228,0.2)',
+              fontSize: 30, lineHeight: 1.4, color: 'var(--bone)',
+              '--reveal-delay': '1600ms', maxWidth: 640, fontWeight: 300,
+            }}
+          >
+            One objection blocked adoption — every time:
+          </div>
+          <div
+            data-reveal className="serif"
+            style={{
+              fontSize: 96, fontStyle: 'italic', marginTop: 16,
+              color: 'var(--amber)', letterSpacing: '-0.02em',
+              '--reveal-delay': '1900ms',
+            }}
+          >
+            Accuracy.
+          </div>
+        </div>
+
+        {/* Quote column */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, paddingTop: 40 }}>
+          {quotes.map((q, i) => (
+            <div
+              key={i}
+              data-reveal
+              className="serif"
+              style={{
+                fontSize: 24, lineHeight: 1.4, fontStyle: 'italic',
+                color: 'var(--bone)',
+                padding: '18px 24px',
+                background: 'rgba(242,237,228,0.04)',
+                borderLeft: '2px solid var(--amber)',
+                '--reveal-delay': `${1400 + i * 200}ms`,
+                '--reveal-y': '20px',
+              }}
+            >
+              {q}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+Object.assign(window, {
+  SlideCover, SlideThesis, SlideProblem, SlideReworkLoop, SlideValidation, Logomark, TOTAL,
+});
