@@ -308,20 +308,6 @@ function SlideThanks({ index }) {
   return (
     <Slide index={index} total={TOTAL} section="14 · Contact" label="Thank You" tone="dark" noChrome>
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-        {/* Ambient drift */}
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.05, pointerEvents: 'none' }}>
-          <div style={{
-            position: 'absolute', top: '-50%', left: 0, right: 0,
-            animation: 'slowDrift 90s linear infinite',
-            fontFamily: 'JetBrains Mono', fontSize: 14, letterSpacing: '0.18em',
-            lineHeight: 2.4, whiteSpace: 'pre', color: 'var(--bone)',
-          }}>
-            {Array.from({ length: 60 }).map((_, i) => (
-              <div key={i}>{`· BUILT FOR ARCHITECTS · REAL-TIME · CITED · VERIFIED `.repeat(3)}</div>
-            ))}
-          </div>
-        </div>
-
         <div className="chrome-top">
           <div className="chrome-label"><span className="dot" />14 · THANK YOU</div>
           <div className="rule" data-reveal style={{ '--reveal-delay': '200ms' }} />

@@ -38,17 +38,6 @@ function SlidePitch({ index }) {
           <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}>2 months</span>.
         </h1>
 
-        <div data-reveal style={{
-          marginTop: 36, fontSize: 22, lineHeight: 1.5, color: 'var(--bone-2)',
-          maxWidth: 1300, fontStyle: 'italic', fontWeight: 300, opacity: 0.75,
-          '--reveal-delay': '900ms',
-        }}>
-          * The full <span className="serif" style={{ fontStyle: 'italic' }}>12 → 2</span> compression is the three-phase moonshot.
-          Phase 1 — what we are raising to build — compresses{' '}
-          <span style={{ color: 'var(--amber)', fontWeight: 500, fontStyle: 'normal' }}>12 → 10 months</span>{' '}
-          for the architect alone.
-        </div>
-
         <div style={{
           marginTop: 'auto', paddingTop: 56,
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, maxWidth: 1620,
@@ -57,15 +46,15 @@ function SlidePitch({ index }) {
             <div style={{ width: 56, height: 2, background: 'var(--bone)', marginBottom: 18 }} />
             <div style={{ fontSize: 28, lineHeight: 1.45, color: 'var(--bone)', fontWeight: 300 }}>
               We are an <span className="serif" style={{ fontStyle: 'italic' }}>AI second-reader</span> that lives inside the 3D modeling software every architect already uses. It checks the building against the code{' '}
-              <span style={{ color: 'var(--amber)', fontWeight: 500 }}>as the building is drawn</span> — and flags violations in real time, with citations.
+              <span style={{ fontWeight: 600 }}>as the building is drawn</span> — and flags violations in real time, with citations.
             </div>
           </div>
           <div data-reveal style={{ '--reveal-delay': '1300ms' }}>
             <div style={{ width: 56, height: 2, background: 'var(--amber)', marginBottom: 18 }} />
             <div style={{ fontSize: 28, lineHeight: 1.45, color: 'var(--bone)', fontWeight: 300 }}>
               The value is not just compliance. It is{' '}
-              <span className="serif" style={{ fontStyle: 'italic', color: 'var(--amber)' }}>time</span>. Every month we remove from pre-construction is{' '}
-              <span style={{ color: 'var(--amber)', fontWeight: 500 }}>millions of dollars</span>{' '}
+              <span className="serif" style={{ fontStyle: 'italic', fontWeight: 600 }}>time</span>. Every month we remove from pre-construction is{' '}
+              <span style={{ fontWeight: 600 }}>millions of dollars</span>{' '}
               in developer financing, returned to the project.
             </div>
           </div>

@@ -68,7 +68,7 @@ function SlideCover({ index }) {
             fontWeight: 300,
           }}
         >
-          Real-time code compliance for<br/>the people who design buildings.
+          Real time building code compliance<br/>for the AEC industry.
         </div>
 
         <div
@@ -234,70 +234,84 @@ function TimeArbitrageFigure() {
   );
 }
 
-/* ============ 03 PROBLEM ============ */
+/* ============ 03 PROBLEM / INDUSTRY FIGURES ============ */
 function SlideProblem({ index }) {
-  const activeIdx = useActiveSlideIndex();
-  const isActive = activeIdx === index;
+  const stats = [
+    {
+      fig: 'I', label: 'SPEND', delay: 800,
+      figure: <>$2.1<span className="serif" style={{ fontSize: '0.38em', letterSpacing: 0, marginLeft: '0.12em' }}>trillion</span></>,
+      desc: 'United States annual construction spend.',
+    },
+    {
+      fig: 'II', label: 'DURATION', delay: 1000,
+      figure: <span style={{ color: 'var(--amber)', fontStyle: 'italic' }}>12<span style={{ fontSize: '0.42em', marginLeft: '0.12em' }}>months</span></span>,
+      desc: 'Typical pre-construction, design to city approval.',
+    },
+    {
+      fig: 'III', label: 'CONSULTANT', delay: 1200,
+      figure: <>$10–<br/>15K</>,
+      annotation: 'recurring',
+      desc: 'Paid to a code consultant, every project, every time, over ~12 weeks.',
+    },
+    {
+      fig: 'IV', label: 'REWORK', delay: 1400,
+      figure: <>3–4<span style={{ fontSize: '0.5em', fontStyle: 'normal' }}>×</span></>,
+      annotation: 'loops',
+      desc: 'Review cycles between architect, consultant, and city before approval.',
+    },
+  ];
 
   return (
-    <Slide index={index} total={TOTAL} section="02 · Problem" label="Problem" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '180px 120px 140px' }}>
-        <div
-          className="mono"
-          data-reveal
-          style={{ fontSize: 16, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 30 }}
-        >
-          ANNUAL US MARGIN BURN — CODE COMPLIANCE REWORK
-        </div>
+    <Slide index={index} total={TOTAL} section="02 · Industry" label="The Industry" tone="paper">
+      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 130px', display: 'flex', flexDirection: 'column' }}>
+        <h2 className="serif" style={{
+          fontSize: 96, lineHeight: 1.04, letterSpacing: '-0.02em',
+          fontWeight: 400, margin: 0, color: 'var(--ink)',
+        }}>
+          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Four figures that</span><br/>
+          <span data-wipe style={{ '--reveal-delay': '500ms' }}>describe the problem.</span>
+        </h2>
 
-        {/* Mega figure */}
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 60 }}>
-          <div
-            className="serif"
-            style={{
-              fontSize: 460,
-              lineHeight: 0.9,
-              letterSpacing: '-0.05em',
-              fontStyle: 'italic',
-              fontWeight: 400,
-              padding: '0 20px 0 0',
-            }}
-          >
-            <span data-reveal style={{ '--reveal-delay': '400ms', '--reveal-y': '80px' }}>$</span>
-            <span data-reveal style={{ '--reveal-delay': '600ms', '--reveal-y': '80px' }}>
-              <Counter to={15} duration={1800} delay={600} active={isActive} format={(n) => Math.round(n)} />
-            </span>
-            <span data-reveal style={{ '--reveal-delay': '1400ms', '--reveal-y': '80px', color: 'var(--amber)' }}>B</span>
-          </div>
-
-          <div style={{ paddingBottom: 80 }}>
-            <div
-              className="mono"
-              data-reveal
-              style={{ fontSize: 18, letterSpacing: '0.3em', opacity: 0.5, '--reveal-delay': '1600ms' }}
-            >
-              ANNUAL · US
+        <div style={{
+          marginTop: 'auto', paddingTop: 32,
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32,
+        }}>
+          {stats.map(({ fig, label, delay, figure, annotation, desc }) => (
+            <div key={fig} data-reveal style={{ '--reveal-delay': `${delay}ms`, '--reveal-y': '32px' }}>
+              <div style={{ borderTop: '1px solid rgba(10,10,10,0.2)', paddingTop: 18 }}>
+                <div style={{
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+                  marginBottom: 20,
+                  fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                  fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase',
+                  color: 'var(--ink)', opacity: 0.5,
+                }}>
+                  <span>FIG.</span>
+                  <span>{fig} · {label}</span>
+                </div>
+                <div className="serif" style={{
+                  fontSize: 110, lineHeight: 0.88, letterSpacing: '-0.04em',
+                  fontWeight: 400, color: 'var(--ink)',
+                }}>
+                  {figure}
+                </div>
+                {annotation && (
+                  <div className="serif" style={{
+                    fontSize: 34, fontStyle: 'italic', color: 'var(--ink)',
+                    opacity: 0.55, marginTop: 8, letterSpacing: '-0.01em',
+                  }}>
+                    {annotation}
+                  </div>
+                )}
+                <div style={{
+                  marginTop: 24, fontSize: 19, lineHeight: 1.45,
+                  color: 'var(--ink)', fontWeight: 300, opacity: 0.8,
+                }}>
+                  {desc}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div
-          data-reveal
-          style={{
-            marginTop: 60,
-            fontSize: 40,
-            lineHeight: 1.35,
-            maxWidth: 1300,
-            color: 'var(--bone)',
-            '--reveal-delay': '1800ms',
-            fontWeight: 300,
-          }}
-        >
-          Every compliance rejection costs a firm{' '}
-          <span style={{ color: 'var(--amber)', fontWeight: 500 }}>$20K–$30K</span>{' '}
-          in rework and a{' '}
-          <span className="serif" style={{ fontStyle: 'italic', fontWeight: 400 }}>delayed</span>{' '}
-          permit.
+          ))}
         </div>
       </div>
     </Slide>

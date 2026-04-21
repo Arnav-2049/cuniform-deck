@@ -235,7 +235,7 @@ function SlideLandscape({ index }) {
         </div>
 
         {/* Matrix */}
-        <div style={{ position: 'relative', aspectRatio: '1.1', alignSelf: 'center', marginTop: 40 }}>
+        <div style={{ position: 'relative', aspectRatio: '1.4', alignSelf: 'center', marginTop: 20 }}>
           <div style={{ position: 'absolute', inset: 0, border: '1px solid rgba(242,237,228,0.18)' }}>
             {/* Axis lines */}
             <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, borderLeft: '1px dashed rgba(242,237,228,0.15)' }} />
@@ -245,7 +245,7 @@ function SlideLandscape({ index }) {
             <div className="mono" style={{ position: 'absolute', left: 16, top: -28, fontSize: 12, letterSpacing: 3, opacity: 0.5 }}>← SEARCH</div>
             <div className="mono" style={{ position: 'absolute', right: 16, top: -28, fontSize: 12, letterSpacing: 3, opacity: 0.5 }}>AUTOMATED →</div>
             <div className="mono" style={{ position: 'absolute', left: -120, top: 16, fontSize: 12, letterSpacing: 3, opacity: 0.5, transform: 'rotate(-90deg)', transformOrigin: 'right top' }}>REALTIME ↑</div>
-            <div className="mono" style={{ position: 'absolute', left: -120, bottom: -20, fontSize: 12, letterSpacing: 3, opacity: 0.5, transform: 'rotate(-90deg)', transformOrigin: 'right bottom' }}>↓ AFTER DESIGN</div>
+            <div className="mono" style={{ position: 'absolute', left: -120, bottom: 14, fontSize: 12, letterSpacing: 3, opacity: 0.5, transform: 'rotate(-90deg)', transformOrigin: 'right bottom' }}>↓ AFTER DESIGN</div>
 
             {/* Quadrant labels */}
             <div style={{ position: 'absolute', left: '2%', bottom: '52%', fontFamily: 'Instrument Serif', fontStyle: 'italic', fontSize: 18, color: 'rgba(242,237,228,0.25)' }}>during · manual</div>
