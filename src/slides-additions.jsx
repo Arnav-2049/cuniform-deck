@@ -281,6 +281,41 @@ function SlideCompetition({ index }) {
           <span data-wipe style={{ '--reveal-delay': '500ms' }}>none <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}>inside the canvas.</span></span>
         </h2>
 
+        {/* PRE-CONSTRUCTION TIMELINE BAR CHART */}
+        <div data-reveal style={{ '--reveal-delay': '1300ms', marginTop: 48, marginBottom: 0 }}>
+          <div className="mono" style={{ fontSize: 13, letterSpacing: 2, opacity: 0.5, marginBottom: 16 }}>
+            PRE-CONSTRUCTION TIMELINE — WITHOUT VS WITH CUNIFORM
+          </div>
+          {[
+            { label: 'Design & compliance check', withoutW: 480, withW: 240, savings: '2× faster',   barDelay: '1400ms' },
+            { label: 'Consultant review loop',    withoutW: 420, withW: 120, savings: 'cut 70%',      barDelay: '1550ms' },
+            { label: 'City permit review',        withoutW: 540, withW: 360, savings: 'weeks saved',  barDelay: '1700ms' },
+            { label: 'Total pre-construction',    withoutW: 600, withW: 288, savings: '12mo → 6mo',   barDelay: '1850ms' },
+          ].map((row, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
+              <div className="mono" style={{ width: 220, fontSize: 13, opacity: 0.6, flexShrink: 0 }}>{row.label}</div>
+              <div style={{ height: 6, background: 'rgba(242,237,228,0.2)', borderRadius: 2, flexShrink: 0, width: row.withoutW }} />
+              <div
+                className="bar-with"
+                style={{
+                  '--bar-w': `${row.withW}px`,
+                  '--bar-delay': row.barDelay,
+                  height: 6,
+                  background: '#DC2626',
+                  borderRadius: 2,
+                }}
+              />
+              <div
+                className="mono"
+                data-reveal
+                style={{ '--reveal-delay': `${parseInt(row.barDelay) + 200}ms`, fontSize: 11, color: '#DC2626', letterSpacing: 2, marginLeft: 12 }}
+              >
+                {row.savings}
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, flex: 1 }}>
           {competitors.map((c, i) => (
             <div key={c.name} data-reveal style={{

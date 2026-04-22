@@ -377,3 +377,7 @@ deck-stage { background: var(--ink); }
 
 /* Bigger hit targets for keynote feel */
 ::selection { background: var(--amber); color: var(--ink); }
+
+/* Competition slide — pre-construction timeline bars */
+.bar-with { width: 0; transition: width 900ms cubic-bezier(.4,0,.2,1) var(--bar-delay); flex-shrink: 0; }
+.slide[data-active] .bar-with { width: var(--bar-w) !important; }
