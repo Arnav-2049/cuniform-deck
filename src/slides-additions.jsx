@@ -265,9 +265,9 @@ function FwNodeAdd({ cx, cy, label, kicker, sub, tone, delay, shown }) {
 /* ============ NEW · COMPETITION ============ */
 function SlideCompetition({ index }) {
   const competitors = [
-    { name: 'UpCodes',       raised: '$33.5M', what: 'Searchable code database and reference tool.', limit: 'Reads the rule book; never sees the model.' },
-    { name: 'CodeComply.Ai', raised: '$2.0M',  what: 'Upload drawings after design for PDF plan review.', limit: 'Reviews the paper, not the pencil.' },
-    { name: 'Permitify',     raised: '$500K',  what: 'Municipal workflow tool sold to building departments.', limit: 'Good for clerks; invisible to architects.' },
+    { name: 'UpCodes',       raised: '$7.64M', what: 'Searchable code database and AI research assistant. Web based.', limit: 'Reads the rule book; never sees the model.' },
+    { name: 'CodeComply.Ai', raised: '$2M',    what: 'Automated plan review. Upload PDFs, receive reports.', limit: 'Reviews the paper, not the pencil.' },
+    { name: 'Permitify',     raised: '$500K',  what: 'AI plan review for building departments. Web based.', limit: 'Good for clerks; invisible to architects.' },
     { name: 'Cuniform',      raised: '—',      what: 'Real-time second reader living inside the 3D canvas.', limit: 'Assist, not review. In the pen, not the paper.', us: true },
   ];
   return (
@@ -286,36 +286,36 @@ function SlideCompetition({ index }) {
             <div key={c.name} data-reveal style={{
               '--reveal-delay': `${700 + i * 140}ms`,
               '--reveal-y': '36px',
-              background: c.us ? 'var(--amber)' : 'rgba(255,255,255,0.03)',
-              border: c.us ? 'none' : '1px solid rgba(242,237,228,0.1)',
+              background: c.us ? 'rgba(242,237,228,0.08)' : 'rgba(255,255,255,0.03)',
+              border: c.us ? '2px solid var(--bone)' : '1px solid rgba(242,237,228,0.1)',
               padding: '32px 28px',
               display: 'flex', flexDirection: 'column',
-              color: c.us ? 'var(--ink)' : 'var(--bone)',
+              color: 'var(--bone)',
             }}>
               <div className="mono" style={{
                 fontSize: 11, letterSpacing: '0.26em', marginBottom: 14,
-                color: c.us ? 'rgba(10,10,10,0.5)' : 'rgba(242,237,228,0.4)',
+                color: 'rgba(242,237,228,0.4)',
               }}>{c.raised}</div>
 
               <div className="serif" style={{
                 fontSize: 44, lineHeight: 1, fontStyle: 'italic',
                 letterSpacing: '-0.015em', marginBottom: 18,
-                color: c.us ? 'var(--ink)' : 'var(--bone)',
+                color: 'var(--bone)',
               }}>{c.name}</div>
 
               <div style={{
                 fontSize: 18, lineHeight: 1.5, fontWeight: 300,
-                color: c.us ? 'rgba(10,10,10,0.75)' : 'var(--bone-2)',
+                color: 'var(--bone-2)',
               }}>{c.what}</div>
 
-              <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: `1px solid ${c.us ? 'rgba(10,10,10,0.15)' : 'rgba(242,237,228,0.1)'}` }}>
+              <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.1)' }}>
                 <div className="mono" style={{
                   fontSize: 10, letterSpacing: '0.26em', marginBottom: 10,
-                  color: c.us ? 'rgba(10,10,10,0.5)' : 'rgba(242,237,228,0.4)',
+                  color: 'rgba(242,237,228,0.4)',
                 }}>{c.us ? 'OUR POSITION' : 'THE LIMIT'}</div>
                 <div style={{
                   fontSize: 19, lineHeight: 1.4, fontStyle: 'italic',
-                  color: c.us ? 'var(--ink)' : 'var(--bone)',
+                  color: 'var(--bone)',
                   fontWeight: c.us ? 500 : 300,
                 }}>{c.limit}</div>
               </div>

@@ -5,15 +5,13 @@
 /* ============ 11 TRACTION / DESIGN PARTNERS ============ */
 function SlideTraction({ index }) {
   const partners = [
-    { name: 'RAMSA', kind: 'Boutique Architecture', stage: 'MOU Signed' },
-    { name: 'East Horizon', kind: 'Mid-market Firm', stage: 'Pilot · Q2' },
-    { name: 'Studio Nord', kind: 'Civic Practice', stage: 'LOI' },
-    { name: 'MeridianDT', kind: 'Digital Twin Consultancy', stage: 'Integration Partner' },
+    { name: 'RAMSA',          kind: 'Global Architecture Firm', stage: 'MOU Signed' },
+    { name: 'Hart Howerton',  kind: 'Global Architecture Firm', stage: 'MOU Signed' },
   ];
 
   return (
     <Slide index={index} total={TOTAL} section="10 · Traction" label="Design Partners" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '140px 120px 120px', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px', display: 'flex', flexDirection: 'column' }}>
         {/* Eyebrow */}
         <div className="mono" data-reveal style={{ fontSize: 15, letterSpacing: '0.28em', color: 'var(--amber)', marginBottom: 28 }}>
           TRACTION · DESIGN PARTNERS
@@ -21,40 +19,35 @@ function SlideTraction({ index }) {
 
         {/* Title */}
         <div className="serif" style={{ fontSize: 96, lineHeight: 1.02, letterSpacing: '-0.02em', maxWidth: 1400 }}>
-          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Four firms</span>{' '}
-          <span data-wipe style={{ '--reveal-delay': '500ms', color: 'var(--amber)' }}>already building with us.</span>
+          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Two firms.</span>{' '}
+          <span data-wipe style={{ '--reveal-delay': '500ms', color: 'var(--amber)' }}>Already signed.</span>
         </div>
 
-        {/* Partner rows — horizontal strips, clearer than dense cards */}
-        <div style={{ marginTop: 72, borderTop: '1px solid rgba(242,237,228,0.14)' }}>
+        {/* Partner cards — 2-up grid */}
+        <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, maxWidth: 900 }}>
           {partners.map((p, i) => (
             <div
               key={p.name}
               data-reveal
               style={{
-                '--reveal-delay': `${900 + i * 140}ms`,
+                '--reveal-delay': `${800 + i * 160}ms`,
                 '--reveal-y': '24px',
-                display: 'grid',
-                gridTemplateColumns: '60px 1.4fr 1.2fr auto',
-                alignItems: 'center',
-                gap: 40,
-                padding: '28px 0',
-                borderBottom: '1px solid rgba(242,237,228,0.14)',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(242,237,228,0.12)',
+                padding: '32px 28px',
+                display: 'flex', flexDirection: 'column', gap: 12,
               }}
             >
-              <div className="mono" style={{ fontSize: 14, letterSpacing: '0.28em', color: 'var(--amber)', opacity: 0.85 }}>
-                / {String(i + 1).padStart(2, '0')}
-              </div>
-              <div className="serif" style={{ fontSize: 48, lineHeight: 1, letterSpacing: '-0.015em' }}>
+              <div className="serif" style={{ fontSize: 44, lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--bone)' }}>
                 {p.name}
               </div>
-              <div style={{ fontSize: 20, color: 'var(--bone-2)', opacity: 0.65, fontWeight: 300 }}>
+              <div style={{ fontSize: 18, color: 'var(--bone-2)', fontWeight: 300 }}>
                 {p.kind}
               </div>
               <div className="mono" style={{
-                fontSize: 12, letterSpacing: '0.2em', color: 'var(--amber)',
+                fontSize: 11, letterSpacing: '0.22em', color: 'var(--amber)',
                 border: '1px solid rgba(220,38,38,0.4)',
-                padding: '8px 14px', whiteSpace: 'nowrap',
+                padding: '6px 12px', alignSelf: 'flex-start', marginTop: 8,
               }}>
                 {p.stage}
               </div>
@@ -63,10 +56,9 @@ function SlideTraction({ index }) {
         </div>
 
         {/* Stats strip — pushed to bottom */}
-        <div style={{ marginTop: 'auto', paddingTop: 48, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 60, borderTop: '2px solid rgba(242,237,228,0.18)' }}>
-          <TractionStat value="180+" label="Waitlist signups · 90 days" delay={1700} />
-          <TractionStat value="62" label="Firms in validation interviews" delay={1900} />
-          <TractionStat value="90%" label="MVP complete · 30 days to GA" delay={2100} />
+        <div style={{ marginTop: 'auto', paddingTop: 40, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 60, maxWidth: 900, borderTop: '2px solid rgba(242,237,228,0.18)' }}>
+          <TractionStat value="60" label="Waitlist signups · 90 days" delay={1400} />
+          <TractionStat value="100%" label="MVP complete · 30 days to GA" delay={1600} />
         </div>
       </div>
     </Slide>

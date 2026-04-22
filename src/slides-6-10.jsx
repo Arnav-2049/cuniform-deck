@@ -184,7 +184,60 @@ function SlideWhyNow({ index }) {
           <span data-wipe style={{ '--reveal-delay': '800ms' }}>in the last 18 months.</span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40, marginTop: 120 }}>
+        {/* Two-panel illustration: architect ↔ city */}
+        <div data-reveal style={{ '--reveal-delay': '300ms', marginTop: 48 }}>
+          <svg width="100%" height="90" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            {/* ── LEFT PANEL: Architect floor plan ── */}
+            {/* Outer rectangle */}
+            <rect data-draw style={{ '--draw-len': '700', '--reveal-delay': '400ms' }} x="40" y="12" width="280" height="64" stroke="rgba(242,237,228,0.55)" strokeWidth="2" fill="none" />
+            {/* Interior partition */}
+            <line data-draw style={{ '--draw-len': '700', '--reveal-delay': '400ms' }} x1="180" y1="12" x2="180" y2="76" stroke="rgba(242,237,228,0.55)" strokeWidth="1.5" />
+            {/* Door arc */}
+            <path d="M 180 76 A 28 28 0 0 1 208 76" stroke="rgba(242,237,228,0.35)" strokeWidth="1" fill="none" />
+            {/* Dimension line */}
+            <line x1="40" y1="84" x2="320" y2="84" stroke="rgba(242,237,228,0.2)" strokeWidth="1" />
+            <line x1="40" y1="80" x2="40" y2="88" stroke="rgba(242,237,228,0.2)" strokeWidth="1" />
+            <line x1="320" y1="80" x2="320" y2="88" stroke="rgba(242,237,228,0.2)" strokeWidth="1" />
+            {/* Amber cursor */}
+            <g data-reveal style={{ '--reveal-delay': '1600ms' }}>
+              <circle cx="220" cy="34" r="5" fill="var(--amber)" />
+              <line x1="213" y1="34" x2="227" y2="34" stroke="rgba(255,122,26,0.4)" strokeWidth="1.5" />
+              <line x1="220" y1="27" x2="220" y2="41" stroke="rgba(255,122,26,0.4)" strokeWidth="1.5" />
+            </g>
+            {/* Left label */}
+            <text x="40" y="88" fontFamily="'JetBrains Mono', monospace" fontSize="10" letterSpacing="2" fill="rgba(242,237,228,0.35)">ARCHITECT STUDIO</text>
+
+            {/* ── CENTER: Amber bridge ── */}
+            <line data-reveal style={{ '--reveal-delay': '800ms' }} x1="720" y1="8" x2="720" y2="82" stroke="var(--amber)" strokeWidth="1" opacity="0.5" />
+            <text data-reveal style={{ '--reveal-delay': '900ms' }} x="720" y="52" textAnchor="middle" fontFamily="Georgia, serif" fontSize="22" fontStyle="italic" fill="var(--amber)" opacity="0.7">→</text>
+
+            {/* ── RIGHT PANEL: City / permit side ── */}
+            <g data-reveal style={{ '--reveal-delay': '1000ms', '--reveal-y': '10px' }}>
+              {/* Building A */}
+              <rect x="900" y="28" width="80" height="52" stroke="rgba(242,237,228,0.55)" strokeWidth="2" fill="none" />
+              {/* Building B (tallest, center) */}
+              <rect x="1000" y="8" width="120" height="72" stroke="rgba(242,237,228,0.55)" strokeWidth="2" fill="none" />
+              {/* Window grid on Bldg B: 3 cols × 4 rows, 8×8 rects, start x=1012 y=18, gap 24h 18v */}
+              {[0,1,2].map(col => [0,1,2,3].map(row => (
+                <rect key={`w-${col}-${row}`} x={1012 + col * 24} y={18 + row * 18} width="8" height="8" stroke="rgba(242,237,228,0.2)" strokeWidth="1" fill="none" />
+              )))}
+              {/* Building C */}
+              <rect x="1140" y="36" width="80" height="44" stroke="rgba(242,237,228,0.55)" strokeWidth="2" fill="none" />
+              {/* Permit stamp on Bldg B top-right */}
+              <circle cx="1130" cy="16" r="14" stroke="var(--amber)" strokeWidth="1.5" fill="none" />
+              {/* Clock hand 12h */}
+              <line x1="1130" y1="16" x2="1130" y2="6" stroke="var(--amber)" strokeWidth="1.5" />
+              {/* Clock hand 3h */}
+              <line x1="1130" y1="16" x2="1140" y2="16" stroke="var(--amber)" strokeWidth="1.5" />
+              {/* Right label */}
+              <text x="1020" y="88" fontFamily="'JetBrains Mono', monospace" fontSize="10" letterSpacing="2" fill="rgba(242,237,228,0.35)">PERMIT AUTHORITY</text>
+            </g>
+
+          </svg>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40, marginTop: 64 }}>
           {forces.map((f, i) => (
             <div
               key={f.n}
@@ -244,8 +297,12 @@ function SlideLandscape({ index }) {
             {/* Axis labels */}
             <div className="mono" style={{ position: 'absolute', left: 16, top: -28, fontSize: 12, letterSpacing: 3, opacity: 0.5 }}>← SEARCH</div>
             <div className="mono" style={{ position: 'absolute', right: 16, top: -28, fontSize: 12, letterSpacing: 3, opacity: 0.5 }}>AUTOMATED →</div>
-            <div className="mono" style={{ position: 'absolute', left: -120, top: 16, fontSize: 12, letterSpacing: 3, opacity: 0.5, transform: 'rotate(-90deg)', transformOrigin: 'right top' }}>REALTIME ↑</div>
-            <div className="mono" style={{ position: 'absolute', left: -120, bottom: 14, fontSize: 12, letterSpacing: 3, opacity: 0.5, transform: 'rotate(-90deg)', transformOrigin: 'right bottom' }}>↓ AFTER DESIGN</div>
+            <div style={{ position: 'absolute', left: -32, top: 16, width: 32 }}>
+              <div className="mono" style={{ position: 'absolute', left: 0, transform: 'rotate(-90deg)', transformOrigin: 'center center', fontSize: 12, letterSpacing: 3, opacity: 0.5 }}>REALTIME ↑</div>
+            </div>
+            <div style={{ position: 'absolute', left: -32, bottom: 14, width: 32 }}>
+              <div className="mono" style={{ position: 'absolute', left: 0, transform: 'rotate(-90deg)', transformOrigin: 'center center', fontSize: 12, letterSpacing: 3, opacity: 0.5 }}>↓ AFTER DESIGN</div>
+            </div>
 
             {/* Quadrant labels */}
             <div style={{ position: 'absolute', left: '2%', bottom: '52%', fontFamily: 'Instrument Serif', fontStyle: 'italic', fontSize: 18, color: 'rgba(242,237,228,0.25)' }}>during · manual</div>

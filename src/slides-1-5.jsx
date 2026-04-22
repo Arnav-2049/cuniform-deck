@@ -117,6 +117,18 @@ function Logomark({ size = 28 }) {
 function SlideThesis({ index }) {
   return (
     <Slide index={index} total={TOTAL} section="01 · Thesis" label="Thesis" tone="dark">
+      {/* Cuneiform wedge mark — brand watermark, right edge */}
+      <svg viewBox="0 0 200 520" style={{
+        position: 'absolute', right: 72, top: 44,
+        width: 210, height: 546,
+        opacity: 0.07, pointerEvents: 'none',
+        overflow: 'visible',
+      }}>
+        <path
+          d="M 22 52 Q 100 98 178 52 C 178 210 110 460 105 510 L 100 522 L 95 510 C 90 460 22 210 22 52 Z"
+          fill="var(--amber)"
+        />
+      </svg>
       <div style={{
         position: 'absolute', inset: 0,
         display: 'grid', gridTemplateColumns: '1.15fr 1fr',
@@ -136,7 +148,7 @@ function SlideThesis({ index }) {
 
           <div className="serif" style={{ fontSize: 112, lineHeight: 0.98, letterSpacing: '-0.02em', fontStyle: 'italic' }}>
             <div data-wipe style={{ '--reveal-delay': '200ms' }}>AEC firms</div>
-            <div data-wipe style={{ '--reveal-delay': '500ms' }}>don't sell drawings.</div>
+            <div data-wipe style={{ '--reveal-delay': '500ms' }}>don't sell buildings.</div>
             <div data-wipe style={{ '--reveal-delay': '900ms', color: 'var(--amber)' }}>They sell time.</div>
           </div>
 
