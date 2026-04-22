@@ -84,6 +84,15 @@ function SlideInsight({ index }) {
 
           {/* Architect side */}
           <div data-reveal style={{ '--reveal-delay': '900ms' }}>
+            <div data-reveal style={{ '--reveal-delay': '600ms', marginBottom: 12 }}>
+              <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect data-draw style={{ '--draw-len': '130', '--reveal-delay': '600ms' }} x="2" y="4" width="28" height="28" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
+                <line data-draw style={{ '--draw-len': '130', '--reveal-delay': '600ms' }} x1="18" y1="4" x2="18" y2="32" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" />
+                <path data-reveal style={{ '--reveal-delay': '1000ms' }} d="M 18 24 A 8 8 0 0 1 26 24" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
+                <line x1="34" y1="8" x2="44" y2="8" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.4" />
+                <circle data-reveal style={{ '--reveal-delay': '1000ms' }} cx="44" cy="8" r="2.5" fill="rgba(10,10,10,0.6)" stroke="none" />
+              </svg>
+            </div>
             <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, marginBottom: 20 }}>ARCHITECT SIDE</div>
             <div className="serif" style={{ fontSize: 44, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--bone)', marginBottom: 20 }}>
               Work exported, re-imported.
@@ -101,6 +110,18 @@ function SlideInsight({ index }) {
 
           {/* City side */}
           <div data-reveal style={{ '--reveal-delay': '1200ms' }}>
+            <div data-reveal style={{ '--reveal-delay': '600ms', marginBottom: 12 }}>
+              <svg width="64" height="36" viewBox="0 0 64 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect data-draw style={{ '--draw-len': '280', '--reveal-delay': '700ms' }} x="2"  y="16" width="14" height="20" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
+                <rect data-draw style={{ '--draw-len': '280', '--reveal-delay': '700ms' }} x="20" y="4"  width="18" height="32" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
+                <rect data-draw style={{ '--draw-len': '280', '--reveal-delay': '700ms' }} x="42" y="12" width="14" height="24" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
+                <g data-reveal style={{ '--reveal-delay': '1200ms' }}>
+                  <circle cx="29" cy="16" r="5" stroke="rgba(10,10,10,0.55)" strokeWidth="1" fill="none" />
+                  <line x1="29" y1="16" x2="29" y2="12" stroke="rgba(10,10,10,0.55)" strokeWidth="1" />
+                  <line x1="29" y1="16" x2="33" y2="16" stroke="rgba(10,10,10,0.55)" strokeWidth="1" />
+                </g>
+              </svg>
+            </div>
             <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, marginBottom: 20 }}>CITY SIDE</div>
             <div className="serif" style={{ fontSize: 44, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--bone)', marginBottom: 32 }}>
               Understaffed. Over-backlogged.
