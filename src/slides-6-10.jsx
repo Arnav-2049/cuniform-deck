@@ -27,8 +27,8 @@ function SlideSolution({ index }) {
           <ul style={{ listStyle: 'none', padding: 0, margin: '60px 0 0', display: 'flex', flexDirection: 'column', gap: 18 }}>
             {[
               ['Inline', 'flags violations as you draw — in Revit, AutoCAD, Rhino.'],
-              ['Cited', 'every flag links to the exact IBC, IECC or local-amendment clause.'],
-              ['Verified', 'a second-pass model checks for hallucination before surfacing.'],
+              ['Linked', 'every flag links to the exact IBC, IECC or local-amendment clause.'],
+              ['Verifiable', 'a second model cross-checks every flag before it reaches you — no black box, no false confidence.'],
             ].map(([title, body], i) => (
               <li key={title} data-reveal style={{ '--reveal-delay': `${1200 + i * 200}ms`, display: 'flex', gap: 20, alignItems: 'baseline' }}>
                 <span style={{ fontSize: 32, fontStyle: 'italic', fontWeight: 600, color: 'var(--amber-deep)', minWidth: 130 }}>
