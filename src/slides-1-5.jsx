@@ -558,6 +558,18 @@ function SlideValidation({ index }) {
           >
             Accuracy.
           </div>
+          <div
+            data-reveal
+            style={{
+              marginTop: 48, paddingTop: 32,
+              borderTop: '1px solid rgba(242,237,228,0.15)',
+              fontSize: 22, lineHeight: 1.5, color: 'var(--bone-2)',
+              fontWeight: 300, maxWidth: 640, opacity: 0.8,
+              '--reveal-delay': '2400ms',
+            }}
+          >
+            So we built accuracy in from the start — not as a feature, but as the foundation. Every flag Cuniform surfaces is cross-referenced, clause-linked, and checked by a second model before you ever see it.
+          </div>
         </div>
 
         {/* Quote column */}
