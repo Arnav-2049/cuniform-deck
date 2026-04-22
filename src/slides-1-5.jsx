@@ -290,6 +290,64 @@ function SlideProblem({ index }) {
         }}>
           {stats.map(({ fig, label, delay, figure, annotation, desc }) => (
             <div key={fig} data-reveal style={{ '--reveal-delay': `${delay}ms`, '--reveal-y': '32px' }}>
+
+              {/* ── Per-figure illustration ── */}
+              {fig === 'I' && (
+                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="110" height="56" viewBox="0 0 110 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4"  y="16" width="18" height="40" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <rect x="26" y="4"  width="22" height="52" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <rect x="52" y="20" width="18" height="36" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <rect x="74" y="10" width="22" height="46" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <line x1="0" y1="56" x2="110" y2="56" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" opacity="0.3" />
+                </svg>
+              )}
+
+              {fig === 'II' && (
+                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="160" height="52" viewBox="0 0 160 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="8" y1="44" x2="152" y2="44" stroke="rgba(10,10,10,0.55)" strokeWidth="1" opacity="0.3" />
+                  {Array.from({ length: 12 }).map((_, i) => {
+                    const x = 8 + i * (144 / 11);
+                    const isEnd = i === 0 || i === 11;
+                    return (
+                      <line key={i} x1={x} y1="44" x2={x} y2={isEnd ? 30 : 36}
+                        stroke={isEnd ? '#DC2626' : 'rgba(10,10,10,0.55)'}
+                        strokeWidth={isEnd ? 2 : 1}
+                        opacity={isEnd ? 1 : 0.4} />
+                    );
+                  })}
+                  <path d="M 8 44 Q 80 8 152 44" stroke="#DC2626" strokeWidth="1.5" fill="none" opacity="0.5" />
+                  <polyline points="146,40 152,44 146,48" stroke="#DC2626" strokeWidth="1.5" fill="none" />
+                </svg>
+              )}
+
+              {fig === 'III' && (
+                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 52 30 A 22 22 0 1 1 30 52" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <polyline points="24,52 30,52 30,46" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <text x="30" y="35" textAnchor="middle" fontSize="16" fontFamily="'Instrument Serif', Georgia, serif" fontStyle="italic" fill="rgba(10,10,10,0.55)" stroke="none">$</text>
+                </svg>
+              )}
+
+              {fig === 'IV' && (
+                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="90" height="72" viewBox="0 0 90 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Arrows */}
+                  <line x1="51" y1="10" x2="76" y2="58" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" />
+                  <polyline points="70,55 76,58 72,50" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <line x1="76" y1="64" x2="14" y2="64" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" />
+                  <polyline points="20,60 14,64 20,68" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <line x1="14" y1="58" x2="40" y2="12" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" />
+                  <polyline points="34,18 40,12 46,18" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  {/* Nodes */}
+                  <circle cx="45" cy="6"  r="6" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <circle cx="8"  cy="64" r="6" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <circle cx="82" cy="64" r="6" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  {/* Labels */}
+                  <text x="45" y="0"  textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.4)" stroke="none">ARCH</text>
+                  <text x="4"  y="72" textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.4)" stroke="none">CITY</text>
+                  <text x="86" y="72" textAnchor="end"    fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.4)" stroke="none">CONSULT</text>
+                </svg>
+              )}
+
               <div style={{ borderTop: '1px solid rgba(10,10,10,0.2)', paddingTop: 18 }}>
                 <div style={{
                   display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
