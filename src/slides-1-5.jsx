@@ -292,59 +292,71 @@ function SlideProblem({ index }) {
             <div key={fig} data-reveal style={{ '--reveal-delay': `${delay}ms`, '--reveal-y': '32px' }}>
 
               {/* ── Per-figure illustration ── */}
+
+              {/* FIG I · SPEND — bars grow up from baseline */}
               {fig === 'I' && (
-                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="110" height="56" viewBox="0 0 110 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4"  y="16" width="18" height="40" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <rect x="26" y="4"  width="22" height="52" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <rect x="52" y="20" width="18" height="36" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <rect x="74" y="10" width="22" height="46" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <line x1="0" y1="56" x2="110" y2="56" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" opacity="0.3" />
+                <svg style={{ marginBottom: 16, display: 'block' }} width="96" height="56" viewBox="0 0 96 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="0" y1="54" x2="96" y2="54" stroke="rgba(10,10,10,0.2)" strokeWidth="1" />
+                  <line data-draw style={{ '--draw-len': '20', '--reveal-delay': `${delay - 300}ms` }} x1="10" y1="54" x2="10" y2="34" stroke="rgba(10,10,10,0.65)" strokeWidth="6" strokeLinecap="square" />
+                  <line data-draw style={{ '--draw-len': '34', '--reveal-delay': `${delay - 180}ms` }} x1="26" y1="54" x2="26" y2="20" stroke="rgba(10,10,10,0.65)" strokeWidth="6" strokeLinecap="square" />
+                  <line data-draw style={{ '--draw-len': '50', '--reveal-delay': `${delay - 60}ms` }}  x1="48" y1="54" x2="48" y2="4"  stroke="rgba(10,10,10,0.65)" strokeWidth="6" strokeLinecap="square" />
+                  <line data-draw style={{ '--draw-len': '38', '--reveal-delay': `${delay + 60}ms` }}  x1="70" y1="54" x2="70" y2="16" stroke="rgba(10,10,10,0.65)" strokeWidth="6" strokeLinecap="square" />
+                  <line data-draw style={{ '--draw-len': '26', '--reveal-delay': `${delay + 180}ms` }} x1="86" y1="54" x2="86" y2="28" stroke="rgba(10,10,10,0.65)" strokeWidth="6" strokeLinecap="square" />
+                  <line data-reveal style={{ '--reveal-delay': `${delay + 400}ms` }} x1="45" y1="4" x2="51" y2="4" stroke="rgba(10,10,10,0.9)" strokeWidth="2" />
                 </svg>
               )}
 
+              {/* FIG II · DURATION — clock strokes itself, hands sweep in, red pulse */}
               {fig === 'II' && (
-                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="160" height="52" viewBox="0 0 160 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="8" y1="44" x2="152" y2="44" stroke="rgba(10,10,10,0.55)" strokeWidth="1" opacity="0.3" />
-                  {Array.from({ length: 12 }).map((_, i) => {
-                    const x = 8 + i * (144 / 11);
-                    const isEnd = i === 0 || i === 11;
-                    return (
-                      <line key={i} x1={x} y1="44" x2={x} y2={isEnd ? 30 : 36}
-                        stroke={isEnd ? '#DC2626' : 'rgba(10,10,10,0.55)'}
-                        strokeWidth={isEnd ? 2 : 1}
-                        opacity={isEnd ? 1 : 0.4} />
-                    );
-                  })}
-                  <path d="M 8 44 Q 80 8 152 44" stroke="#DC2626" strokeWidth="1.5" fill="none" opacity="0.5" />
-                  <polyline points="146,40 152,44 146,48" stroke="#DC2626" strokeWidth="1.5" fill="none" />
+                <svg style={{ marginBottom: 16, display: 'block' }} width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle data-draw style={{ '--draw-len': '151', '--reveal-delay': `${delay - 300}ms` }} cx="28" cy="28" r="24" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" />
+                  <circle data-reveal style={{ '--reveal-delay': `${delay + 500}ms` }} cx="28" cy="28" r="2" fill="rgba(10,10,10,0.7)" stroke="none" />
+                  <line  data-reveal style={{ '--reveal-delay': `${delay + 600}ms` }} x1="28" y1="28" x2="16" y2="14" stroke="rgba(10,10,10,0.8)" strokeWidth="2"   strokeLinecap="round" />
+                  <line  data-reveal style={{ '--reveal-delay': `${delay + 600}ms` }} x1="28" y1="28" x2="28" y2="8"  stroke="rgba(10,10,10,0.6)" strokeWidth="1.5" strokeLinecap="round" />
+                  <circle data-reveal style={{ '--reveal-delay': `${delay + 800}ms` }} cx="28" cy="5" r="3" fill="#DC2626" stroke="none" />
                 </svg>
               )}
 
+              {/* FIG III · CONSULTANT — invoice lines draw, then loop arrow strokes */}
               {fig === 'III' && (
-                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 52 30 A 22 22 0 1 1 30 52" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <polyline points="24,52 30,52 30,46" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <text x="30" y="35" textAnchor="middle" fontSize="16" fontFamily="'Instrument Serif', Georgia, serif" fontStyle="italic" fill="rgba(10,10,10,0.55)" stroke="none">$</text>
+                <svg style={{ marginBottom: 16, display: 'block' }} width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line data-draw style={{ '--draw-len': '64', '--reveal-delay': `${delay - 300}ms` }} x1="0" y1="14" x2="64" y2="14" stroke="rgba(10,10,10,0.65)" strokeWidth="2" />
+                  <line data-draw style={{ '--draw-len': '58', '--reveal-delay': `${delay - 100}ms` }} x1="0" y1="26" x2="58" y2="26" stroke="rgba(10,10,10,0.65)" strokeWidth="2" />
+                  <line data-draw style={{ '--draw-len': '68', '--reveal-delay': `${delay + 100}ms` }} x1="0" y1="38" x2="68" y2="38" stroke="rgba(10,10,10,0.65)" strokeWidth="2" />
+                  {[14, 26, 38].map((y, li) => [16, 32, 48].map(x => (
+                    <line key={`${li}-${x}`} data-reveal style={{ '--reveal-delay': `${delay - 150 + li * 200}ms` }}
+                      x1={x} y1={y - 3} x2={x} y2={y + 3} stroke="rgba(10,10,10,0.65)" strokeWidth="1" opacity="0.35" />
+                  )))}
+                  <path data-draw style={{ '--draw-len': '120', '--reveal-delay': `${delay + 350}ms` }}
+                    d="M 68 38 C 84 38 84 8 64 8 L 0 8"
+                    stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
+                  <polyline data-reveal style={{ '--reveal-delay': `${delay + 550}ms` }}
+                    points="6,4 0,8 6,12" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" fill="none" />
                 </svg>
               )}
 
+              {/* FIG IV · REWORK — nodes appear, edges stroke in sequence, ×3 closes loop */}
               {fig === 'IV' && (
-                <svg data-reveal style={{ '--reveal-delay': `${delay - 200}ms`, marginBottom: 20, display: 'block' }} width="90" height="72" viewBox="0 0 90 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Arrows */}
-                  <line x1="51" y1="10" x2="76" y2="58" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" />
-                  <polyline points="70,55 76,58 72,50" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <line x1="76" y1="64" x2="14" y2="64" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" />
-                  <polyline points="20,60 14,64 20,68" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <line x1="14" y1="58" x2="40" y2="12" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" />
-                  <polyline points="34,18 40,12 46,18" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                <svg style={{ marginBottom: 16, display: 'block' }} width="88" height="76" viewBox="0 0 88 76" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Nodes */}
-                  <circle cx="45" cy="6"  r="6" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <circle cx="8"  cy="64" r="6" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
-                  <circle cx="82" cy="64" r="6" stroke="rgba(10,10,10,0.55)" strokeWidth="1.5" fill="none" />
+                  <circle data-reveal style={{ '--reveal-delay': `${delay - 300}ms` }} cx="44" cy="8"  r="5" fill="rgba(10,10,10,0.7)" stroke="none" />
+                  <circle data-reveal style={{ '--reveal-delay': `${delay - 150}ms` }} cx="8"  cy="66" r="5" fill="rgba(10,10,10,0.7)" stroke="none" />
+                  <circle data-reveal style={{ '--reveal-delay': `${delay + 0}ms` }}   cx="80" cy="66" r="5" fill="rgba(10,10,10,0.7)" stroke="none" />
                   {/* Labels */}
-                  <text x="45" y="0"  textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.4)" stroke="none">ARCH</text>
-                  <text x="4"  y="72" textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.4)" stroke="none">CITY</text>
-                  <text x="86" y="72" textAnchor="end"    fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.4)" stroke="none">CONSULT</text>
+                  <text data-reveal style={{ '--reveal-delay': `${delay - 300}ms` }} x="44" y="2"  textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.45)" stroke="none">ARCH</text>
+                  <text data-reveal style={{ '--reveal-delay': `${delay - 150}ms` }} x="8"  y="76" textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.45)" stroke="none">CITY</text>
+                  <text data-reveal style={{ '--reveal-delay': `${delay + 0}ms` }}   x="80" y="76" textAnchor="middle" fontSize="7" fontFamily="'JetBrains Mono', monospace" fill="rgba(10,10,10,0.45)" stroke="none">CONSULT</text>
+                  {/* Edge: Arch → City */}
+                  <line data-draw style={{ '--draw-len': '60', '--reveal-delay': `${delay + 100}ms` }} x1="40" y1="12" x2="12" y2="62" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" />
+                  <polyline data-reveal style={{ '--reveal-delay': `${delay + 260}ms` }} points="8,55 12,62 18,57" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" fill="none" />
+                  {/* Edge: City → Consult */}
+                  <line data-draw style={{ '--draw-len': '60', '--reveal-delay': `${delay + 300}ms` }} x1="14" y1="66" x2="74" y2="66" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" />
+                  <polyline data-reveal style={{ '--reveal-delay': `${delay + 460}ms` }} points="68,62 74,66 68,70" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" fill="none" />
+                  {/* Edge: Consult → Arch */}
+                  <line data-draw style={{ '--draw-len': '60', '--reveal-delay': `${delay + 500}ms` }} x1="76" y1="62" x2="48" y2="12" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" />
+                  <polyline data-reveal style={{ '--reveal-delay': `${delay + 660}ms` }} points="52,18 48,12 44,18" stroke="rgba(10,10,10,0.65)" strokeWidth="1.5" fill="none" />
+                  {/* ×3 closes the loop */}
+                  <text data-reveal style={{ '--reveal-delay': `${delay + 800}ms` }} x="44" y="44" textAnchor="middle" fontFamily="'Instrument Serif', Georgia, serif" fontStyle="italic" fontSize="18" fill="rgba(10,10,10,0.6)" stroke="none">×3</text>
                 </svg>
               )}
 
