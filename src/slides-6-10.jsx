@@ -31,7 +31,7 @@ function SlideSolution({ index }) {
               ['Verified', 'a second-pass model checks for hallucination before surfacing.'],
             ].map(([title, body], i) => (
               <li key={title} data-reveal style={{ '--reveal-delay': `${1200 + i * 200}ms`, display: 'flex', gap: 20, alignItems: 'baseline' }}>
-                <span className="serif" style={{ fontSize: 32, fontStyle: 'italic', color: 'var(--amber-deep)', minWidth: 130 }}>
+                <span style={{ fontSize: 32, fontStyle: 'italic', fontWeight: 600, color: 'var(--amber-deep)', minWidth: 130 }}>
                   {title}
                 </span>
                 <span style={{ fontSize: 22, color: 'var(--ink)', opacity: 0.8, lineHeight: 1.4 }}>{body}</span>
@@ -341,9 +341,9 @@ function SlideMarket({ index }) {
 
         <div data-reveal style={{ '--reveal-delay': '1800ms', marginTop: 80, fontSize: 26, color: 'var(--bone-2)', opacity: 0.7, maxWidth: 1200, fontWeight: 300 }}>
           Architects are the beachhead. Civil engineers{' '}
-          <span className="serif" style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--bone)' }}>triple</span>{' '}
+          <span style={{ fontStyle: 'italic' }}>triple</span>{' '}
           the seats. Contractors add{' '}
-          <span style={{ color: 'var(--amber)', fontWeight: 500 }}>700K</span> more.
+          <span style={{ fontWeight: 600 }}>700K</span> more.
         </div>
       </div>
     </Slide>

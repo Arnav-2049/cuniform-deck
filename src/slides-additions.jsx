@@ -68,91 +68,63 @@ function SlidePitch({ index }) {
 function SlideInsight({ index }) {
   return (
     <Slide index={index} total={TOTAL} section="04 · Insight" label="The Insight" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '170px 120px 130px', display: 'flex', flexDirection: 'column' }}>
-        <div className="serif" data-reveal style={{
-          fontSize: 24, fontStyle: 'italic', color: 'var(--amber)',
-          marginBottom: 28, '--reveal-delay': '100ms',
-        }}>
-          An observation from forty interviews —
-        </div>
+      <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 110px', display: 'flex', flexDirection: 'column' }}>
 
         <h2 className="serif" style={{
           fontSize: 108, lineHeight: 1.02, letterSpacing: '-0.02em',
-          fontStyle: 'italic', fontWeight: 400, margin: 0, color: 'var(--bone)', maxWidth: 1620,
+          fontStyle: 'italic', fontWeight: 400, margin: 0, color: 'var(--bone)',
         }}>
-          <span data-wipe style={{ '--reveal-delay': '300ms' }}>Both sides of the hand-off</span><br/>
-          <span data-wipe style={{ '--reveal-delay': '700ms' }}>
+          <span data-wipe style={{ '--reveal-delay': '200ms' }}>Both sides of the hand-off</span><br/>
+          <span data-wipe style={{ '--reveal-delay': '600ms' }}>
             are <span style={{ color: 'var(--amber)' }}>losing time.</span>
           </span>
         </h2>
 
-        <div style={{
-          marginTop: 64, display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: 40, maxWidth: 1620,
-        }}>
-          {/* Architect side card */}
-          <div data-reveal style={{
-            border: '1px solid rgba(242,237,228,0.18)', padding: 36,
-            background: 'rgba(255,255,255,0.02)', '--reveal-delay': '1000ms',
-          }}>
-            <div className="mono" style={{
-              fontSize: 13, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700,
-            }}>ARCHITECT SIDE</div>
-            <div className="serif" style={{
-              fontSize: 42, fontStyle: 'italic', color: 'var(--bone)', marginTop: 14, lineHeight: 1.1,
-            }}>Work exported, re-imported.</div>
-            <div style={{ width: 40, height: 1, background: 'var(--bone-2)', opacity: 0.4, margin: '20px 0' }} />
-            <div style={{ fontSize: 22, lineHeight: 1.55, color: 'var(--bone)', fontWeight: 300 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 100, marginTop: 'auto', paddingTop: 56 }}>
+
+          {/* Architect side */}
+          <div data-reveal style={{ '--reveal-delay': '900ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, marginBottom: 20 }}>ARCHITECT SIDE</div>
+            <div className="serif" style={{ fontSize: 44, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--bone)', marginBottom: 20 }}>
+              Work exported, re-imported.
+            </div>
+            <div style={{ width: 36, height: 1, background: 'var(--bone-2)', opacity: 0.3, marginBottom: 20 }} />
+            <div style={{ fontSize: 22, lineHeight: 1.65, color: 'var(--bone-2)', fontWeight: 300 }}>
               A competent architect can read the code. What no human can do is hold{' '}
-              <span style={{ color: 'var(--amber)', fontWeight: 500 }}>ten thousand conditional rules</span>{' '}
-              in their head while drawing. So the work is exported to a consultant, then re-imported as a markup, then redrawn.
-              <br/><br/>
-              <span className="serif" style={{ fontStyle: 'italic', color: 'var(--amber)' }}>Each translation costs weeks.</span>
+              <span style={{ fontWeight: 600, color: 'var(--bone)' }}>ten thousand conditional rules</span>{' '}
+              in their head while drawing. So the work is exported to a consultant, re-imported as markup, then redrawn.
+            </div>
+            <div style={{ marginTop: 18, fontSize: 22, fontStyle: 'italic', color: 'var(--bone-2)', opacity: 0.75 }}>
+              Each translation costs weeks.
             </div>
           </div>
 
-          {/* City side card */}
-          <div data-reveal style={{
-            border: '1px solid rgba(242,237,228,0.18)', padding: 36,
-            background: 'rgba(220,38,38,0.05)', '--reveal-delay': '1250ms',
-          }}>
-            <div className="mono" style={{
-              fontSize: 13, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700,
-            }}>CITY SIDE</div>
-            <div className="serif" style={{
-              fontSize: 42, fontStyle: 'italic', color: 'var(--bone)', marginTop: 14, lineHeight: 1.1,
-            }}>Understaffed. Over-backlogged.</div>
-            <div style={{ width: 40, height: 1, background: 'var(--bone-2)', opacity: 0.4, margin: '20px 0' }} />
-            <div style={{
-              display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: 20, rowGap: 14, alignItems: 'baseline',
-            }}>
-              <div className="serif" style={{ fontSize: 40, fontStyle: 'italic', color: 'var(--amber)', lineHeight: 1 }}>10+ mo</div>
-              <div style={{ fontSize: 19, color: 'var(--bone)', lineHeight: 1.3, fontWeight: 300 }}>
-                permit backlogs in <span style={{ color: 'var(--bone-2)' }}>Florida, Southern California, major East Coast metros.</span>
-              </div>
-              <div className="serif" style={{ fontSize: 40, fontStyle: 'italic', color: 'var(--amber)', lineHeight: 1 }}>↓ staff</div>
-              <div style={{ fontSize: 19, color: 'var(--bone)', lineHeight: 1.3, fontWeight: 300 }}>
-                senior plans examiners <span style={{ color: 'var(--amber)', fontWeight: 500 }}>retiring</span>; hiring has not kept pace.
-              </div>
-              <div className="serif" style={{ fontSize: 40, fontStyle: 'italic', color: 'var(--amber)', lineHeight: 1 }}>3–4×</div>
-              <div style={{ fontSize: 19, color: 'var(--bone)', lineHeight: 1.3, fontWeight: 300 }}>
-                every re-submission consumes a new reviewer slot. <span className="serif" style={{ fontStyle: 'italic' }}>The backlog is the re-work.</span>
-              </div>
+          {/* City side */}
+          <div data-reveal style={{ '--reveal-delay': '1200ms' }}>
+            <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, marginBottom: 20 }}>CITY SIDE</div>
+            <div className="serif" style={{ fontSize: 44, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--bone)', marginBottom: 32 }}>
+              Understaffed. Over-backlogged.
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {[
+                { stat: '10+ mo', desc: 'permit backlogs in Florida, Southern California, major East Coast metros.' },
+                { stat: '↓ staff', desc: 'senior plans examiners retiring; hiring has not kept pace.' },
+                { stat: '3–4×',   desc: 'every re-submission consumes a new reviewer slot. The backlog is the re-work.' },
+              ].map(({ stat, desc }) => (
+                <div key={stat} style={{ display: 'grid', gridTemplateColumns: '110px 1fr', gap: 24, alignItems: 'baseline' }}>
+                  <div className="serif" style={{ fontSize: 42, fontStyle: 'italic', color: 'var(--amber)', lineHeight: 1 }}>{stat}</div>
+                  <div style={{ fontSize: 20, color: 'var(--bone-2)', lineHeight: 1.4, fontWeight: 300 }}>{desc}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Synthesis ribbon */}
-        <div data-reveal style={{
-          marginTop: 40, paddingTop: 22, borderTop: '2px solid var(--bone)',
-          display: 'flex', alignItems: 'center', gap: 28, '--reveal-delay': '1600ms',
-        }}>
-          <div className="mono" style={{
-            fontSize: 13, letterSpacing: '0.3em', color: 'var(--amber)',
-            fontWeight: 700, whiteSpace: 'nowrap',
-          }}>THE INSIGHT</div>
-          <div className="serif" style={{ fontSize: 30, fontStyle: 'italic', color: 'var(--bone)', lineHeight: 1.35 }}>
-            If we can synchronize the two sides, <span style={{ color: 'var(--amber)' }}>both will pay.</span>{' '}
+        {/* Synthesis */}
+        <div data-reveal style={{ marginTop: 'auto', paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.2)', display: 'flex', alignItems: 'baseline', gap: 28, '--reveal-delay': '1700ms' }}>
+          <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, whiteSpace: 'nowrap' }}>THE INSIGHT</div>
+          <div style={{ fontSize: 26, fontStyle: 'italic', color: 'var(--bone-2)', lineHeight: 1.4 }}>
+            If we can synchronize the two sides, <span style={{ fontWeight: 600, color: 'var(--bone)' }}>both will pay.</span>{' '}
             Architects pay for seats; cities pay to clear the backlog.
           </div>
         </div>
@@ -192,11 +164,11 @@ function SlideFlywheel({ index }) {
           <div data-reveal style={{ '--reveal-delay': '1300ms' }}>
             <div style={{ width: 56, height: 2, background: 'var(--amber)', margin: '26px 0 18px' }} />
             <div style={{ fontSize: 19, lineHeight: 1.5, color: 'var(--bone)', fontWeight: 300, maxWidth: 660 }}>
-              The architect is the <span className="serif" style={{ fontStyle: 'italic' }}>top of the funnel</span>.
+              The architect is the <span style={{ fontStyle: 'italic' }}>top of the funnel</span>.
               Every firm that adopts Cuniform gives us{' '}
-              <span style={{ color: 'var(--amber)', fontWeight: 500 }}>the data a city would pay for</span> —
+              <span style={{ fontWeight: 600 }}>the data a city would pay for</span> —
               and every integrated city gives developers a shortcut{' '}
-              <span className="serif" style={{ fontStyle: 'italic', color: 'var(--amber)' }}>only Cuniform can sell.</span>
+              <span style={{ fontStyle: 'italic', fontWeight: 600 }}>only Cuniform can sell.</span>
             </div>
           </div>
 
@@ -293,109 +265,65 @@ function FwNodeAdd({ cx, cy, label, kicker, sub, tone, delay, shown }) {
 /* ============ NEW · COMPETITION ============ */
 function SlideCompetition({ index }) {
   const competitors = [
-    { name: 'UpCodes',       raised: '$33.5M', stance: 'Code search + reference', workflow: 'Web app · reads code only',     adoption: 'Separate browser tool', why: 'Reads the rule book; never sees the model.' },
-    { name: 'CodeComply.Ai', raised: '$2.0M',  stance: 'PDF plan review',         workflow: 'Upload drawings after-the-fact', adoption: 'Post-design audit',     why: 'Reviews the paper, not the pencil.' },
-    { name: 'Permitify',     raised: '$500K',  stance: 'City-side permit portal', workflow: 'Municipal workflow tool',         adoption: 'Sells to cities',       why: 'Good for clerks; invisible to architects.' },
-    { name: 'Cuniform',      raised: '—',      stance: 'Real-time second reader', workflow: 'Inside the 3D design canvas',     adoption: 'Zero-friction plug-in', why: 'Assist, not just review. Pencil, not paper.', us: true },
+    { name: 'UpCodes',       raised: '$33.5M', what: 'Searchable code database and reference tool.', limit: 'Reads the rule book; never sees the model.' },
+    { name: 'CodeComply.Ai', raised: '$2.0M',  what: 'Upload drawings after design for PDF plan review.', limit: 'Reviews the paper, not the pencil.' },
+    { name: 'Permitify',     raised: '$500K',  what: 'Municipal workflow tool sold to building departments.', limit: 'Good for clerks; invisible to architects.' },
+    { name: 'Cuniform',      raised: '—',      what: 'Real-time second reader living inside the 3D canvas.', limit: 'Assist, not review. In the pen, not the paper.', us: true },
   ];
   return (
     <Slide index={index} total={TOTAL} section="11 · Competition" label="Competition" tone="dark">
       <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 110px', display: 'flex', flexDirection: 'column' }}>
         <h2 className="serif" style={{
-          fontSize: 76, lineHeight: 1.02, letterSpacing: '-0.02em',
-          fontWeight: 400, margin: 0, color: 'var(--bone)', maxWidth: 1620,
+          fontSize: 80, lineHeight: 1.02, letterSpacing: '-0.02em',
+          fontWeight: 400, margin: '0 0 48px', color: 'var(--bone)',
         }}>
           <span data-wipe style={{ '--reveal-delay': '100ms' }}>A category of three —</span>{' '}
-          <span data-wipe style={{ '--reveal-delay': '500ms' }}>
-            none <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}>inside the canvas.</span>
-          </span>
+          <span data-wipe style={{ '--reveal-delay': '500ms' }}>none <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}>inside the canvas.</span></span>
         </h2>
 
-        <div style={{ marginTop: 36 }}>
-          <div data-reveal style={{ '--reveal-delay': '900ms' }}>
-            <div style={{
-              display: 'grid', gridTemplateColumns: '1.1fr 0.7fr 1.1fr 1.1fr 1.1fr 1.4fr',
-              columnGap: 18, padding: '14px 0',
-              borderTop: '2px solid var(--bone)', borderBottom: '1px solid rgba(242,237,228,0.3)',
-              fontFamily: 'Inter', fontSize: 12, letterSpacing: '0.24em', textTransform: 'uppercase',
-              color: 'var(--bone)', fontWeight: 700,
-            }}>
-              <span>Company</span><span>Raised</span><span>Stance</span><span>Workflow</span><span>Adoption</span><span>The limit</span>
-            </div>
-          </div>
-
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, flex: 1 }}>
           {competitors.map((c, i) => (
-            <div key={c.name} data-reveal style={{ '--reveal-delay': `${1100 + i * 160}ms` }}>
+            <div key={c.name} data-reveal style={{
+              '--reveal-delay': `${700 + i * 140}ms`,
+              '--reveal-y': '36px',
+              background: c.us ? 'var(--amber)' : 'rgba(255,255,255,0.03)',
+              border: c.us ? 'none' : '1px solid rgba(242,237,228,0.1)',
+              padding: '32px 28px',
+              display: 'flex', flexDirection: 'column',
+              color: c.us ? 'var(--ink)' : 'var(--bone)',
+            }}>
+              <div className="mono" style={{
+                fontSize: 11, letterSpacing: '0.26em', marginBottom: 14,
+                color: c.us ? 'rgba(10,10,10,0.5)' : 'rgba(242,237,228,0.4)',
+              }}>{c.raised}</div>
+
+              <div className="serif" style={{
+                fontSize: 44, lineHeight: 1, fontStyle: 'italic',
+                letterSpacing: '-0.015em', marginBottom: 18,
+                color: c.us ? 'var(--ink)' : 'var(--bone)',
+              }}>{c.name}</div>
+
               <div style={{
-                display: 'grid', gridTemplateColumns: '1.1fr 0.7fr 1.1fr 1.1fr 1.1fr 1.4fr',
-                columnGap: 18, padding: c.us ? '16px 22px' : '14px 0',
-                borderBottom: '1px solid rgba(242,237,228,0.14)',
-                alignItems: 'baseline',
-                background: c.us ? 'var(--amber)' : 'transparent',
-                color: c.us ? '#0A0A0A' : 'var(--bone)',
-                margin: c.us ? '0 -22px' : 0,
-              }}>
-                <div>
-                  <div className="serif" style={{
-                    fontSize: 26, fontStyle: c.us ? 'italic' : 'normal',
-                    color: c.us ? '#0A0A0A' : 'var(--bone)', lineHeight: 1,
-                  }}>{c.name}</div>
-                  {c.us && <div className="mono" style={{
-                    fontSize: 10, letterSpacing: '0.3em', color: '#0A0A0A',
-                    opacity: 0.8, fontWeight: 700, marginTop: 3,
-                  }}>US</div>}
-                </div>
-                <div className="serif" style={{
-                  fontSize: 19, fontStyle: 'italic',
-                  color: c.us ? '#0A0A0A' : 'var(--bone-2)', opacity: c.us ? 0.85 : 0.7,
-                }}>{c.raised}</div>
-                <div style={{ fontSize: 17, lineHeight: 1.3, fontWeight: 300 }}>{c.stance}</div>
-                <div style={{ fontSize: 17, lineHeight: 1.3, fontWeight: 300 }}>{c.workflow}</div>
-                <div style={{ fontSize: 17, lineHeight: 1.3, fontWeight: 300 }}>{c.adoption}</div>
-                <div className="serif" style={{
-                  fontSize: 17, fontStyle: 'italic', lineHeight: 1.3,
-                  color: c.us ? '#0A0A0A' : 'var(--bone-2)',
-                }}>{c.why}</div>
+                fontSize: 18, lineHeight: 1.5, fontWeight: 300,
+                color: c.us ? 'rgba(10,10,10,0.75)' : 'var(--bone-2)',
+              }}>{c.what}</div>
+
+              <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: `1px solid ${c.us ? 'rgba(10,10,10,0.15)' : 'rgba(242,237,228,0.1)'}` }}>
+                <div className="mono" style={{
+                  fontSize: 10, letterSpacing: '0.26em', marginBottom: 10,
+                  color: c.us ? 'rgba(10,10,10,0.5)' : 'rgba(242,237,228,0.4)',
+                }}>{c.us ? 'OUR POSITION' : 'THE LIMIT'}</div>
+                <div style={{
+                  fontSize: 19, lineHeight: 1.4, fontStyle: 'italic',
+                  color: c.us ? 'var(--ink)' : 'var(--bone)',
+                  fontWeight: c.us ? 500 : 300,
+                }}>{c.limit}</div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Differentiator strip — condensed to a single line of three claims */}
-        <div data-reveal style={{
-          marginTop: 'auto', paddingTop: 28,
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28,
-          borderTop: '1px solid rgba(242,237,228,0.22)',
-          '--reveal-delay': '1900ms',
-        }}>
-          <DiffCardAdd
-            k="Ease of adoption"
-            v={<>Integrated <span className="serif" style={{ fontStyle: 'italic' }}>in the pen</span>, not the paper.</>}
-          />
-          <DiffCardAdd red
-            k="Assist, not review"
-            v={<>GitHub Copilot, <span className="serif" style={{ fontStyle: 'italic' }}>not code-review.</span></>}
-          />
-          <DiffCardAdd
-            k="Cited, not opaque"
-            v={<>Every flag links to the <span style={{ color: 'var(--amber)', fontWeight: 500 }}>code line.</span></>}
-          />
-        </div>
       </div>
     </Slide>
-  );
-}
-function DiffCardAdd({ k, v, red = false }) {
-  return (
-    <div style={{ paddingTop: 4 }}>
-      <div className="mono" style={{
-        fontSize: 11, letterSpacing: '0.28em', textTransform: 'uppercase',
-        color: red ? 'var(--amber)' : 'var(--bone-2)', fontWeight: 700,
-      }}>{k}</div>
-      <div style={{
-        fontSize: 24, color: 'var(--bone)', marginTop: 10, lineHeight: 1.25, fontWeight: 300,
-      }}>{v}</div>
-    </div>
   );
 }
 
@@ -488,10 +416,10 @@ function SlideWhyNowV2({ index }) {
   const innerRef = useRef(null);
   const isActive = useSlideActive(innerRef);
   const items = [
-    { n: 'i',   t: 'The code has thickened.',           d: <>Building codes and state overlays have <span style={{ color: 'var(--amber)', fontWeight: 500 }}>quadrupled in volume</span> since 1990. <span className="serif" style={{ fontStyle: 'italic' }}>No unaided human</span> holds it all.</>, Icon: WhyThick },
-    { n: 'ii',  t: 'BIM has won.',                      d: <>3D modeling is the <span className="serif" style={{ fontStyle: 'italic' }}>lingua franca</span> of mid-market architecture. A single integration surface reaches <span style={{ color: 'var(--amber)', fontWeight: 500 }}>80% of US firms</span>.</>, Icon: WhyBIM },
-    { n: 'iii', t: 'Reasoning AI crossed the line.',    d: <>What was a demo three years ago is <span style={{ color: 'var(--amber)', fontWeight: 500 }}>production-grade</span> for structured, cited reasoning. Compliance is the <span className="serif" style={{ fontStyle: 'italic' }}>ideal first workload</span>.</>, Icon: WhyAI },
-    { n: 'iv',  t: 'Consultants are retiring.',         d: <>Code consultants <span style={{ color: 'var(--amber)', fontWeight: 500 }}>retire faster than they are replaced</span>. A succession problem we convert into a <span className="serif" style={{ fontStyle: 'italic' }}>software problem</span>.</>, Icon: WhyRetire },
+    { n: 'i',   t: 'The code has thickened.',           d: <>Building codes and state overlays have <span style={{ fontWeight: 600 }}>quadrupled in volume</span> since 1990. <span style={{ fontStyle: 'italic' }}>No unaided human</span> holds it all.</>, Icon: WhyThick },
+    { n: 'ii',  t: 'BIM has won.',                      d: <>3D modeling is the <span style={{ fontStyle: 'italic' }}>lingua franca</span> of mid-market architecture. A single integration surface reaches <span style={{ fontWeight: 600 }}>80% of US firms</span>.</>, Icon: WhyBIM },
+    { n: 'iii', t: 'Reasoning AI crossed the line.',    d: <>What was a demo three years ago is <span style={{ fontWeight: 600 }}>production-grade</span> for structured, cited reasoning. Compliance is the <span style={{ fontStyle: 'italic' }}>ideal first workload</span>.</>, Icon: WhyAI },
+    { n: 'iv',  t: 'Consultants are retiring.',         d: <>Code consultants <span style={{ fontWeight: 600 }}>retire faster than they are replaced</span>. A succession problem we convert into a <span style={{ fontStyle: 'italic' }}>software problem</span>.</>, Icon: WhyRetire },
   ];
   return (
     <Slide index={index} total={TOTAL} section="07 · Why Now" label="Why Now" tone="dark">

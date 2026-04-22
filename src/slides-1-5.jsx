@@ -451,7 +451,7 @@ function SlideValidation({ index }) {
               want this tool.
             </div>
             <div data-reveal style={{ '--reveal-delay': '1200ms', fontSize: 48, marginTop: 12, color: 'var(--bone-2)', opacity: 0.7 }}>
-              48% say <em style={{ color: 'var(--amber)' }}>very useful.</em>
+              48% say <em style={{ fontWeight: 600 }}>very useful.</em>
             </div>
           </div>
 
@@ -484,7 +484,6 @@ function SlideValidation({ index }) {
             <div
               key={i}
               data-reveal
-              className="serif"
               style={{
                 fontSize: 24, lineHeight: 1.4, fontStyle: 'italic',
                 color: 'var(--bone)',

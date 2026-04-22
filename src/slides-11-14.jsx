@@ -111,15 +111,15 @@ function SlideTeam({ index }) {
 
   return (
     <Slide index={index} total={TOTAL} section="11 · Team" label="Team" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '140px 120px 110px' }}>
-        <div className="serif" style={{ fontSize: 84, lineHeight: 1.0, letterSpacing: '-0.02em', fontStyle: 'italic', marginBottom: 14 }}>
+      <div style={{ position: 'absolute', inset: 0, padding: '130px 120px 100px' }}>
+        <div className="serif" style={{ fontSize: 72, lineHeight: 1.0, letterSpacing: '-0.02em', fontStyle: 'italic', marginBottom: 12 }}>
           <span data-wipe style={{ '--reveal-delay': '200ms' }}>An architect, an ML engineer,</span>
           <br/>
           <span data-wipe style={{ '--reveal-delay': '500ms', color: 'var(--amber)' }}>and an enterprise designer.</span>
         </div>
         <div data-reveal style={{ '--reveal-delay': '900ms', fontSize: 22, color: 'var(--bone-2)', opacity: 0.75, maxWidth: 1100, fontWeight: 300 }}>
-          The <span style={{ color: 'var(--amber)', fontWeight: 500 }}>three disciplines</span> you need to ship{' '}
-          <span className="serif" style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--bone)' }}>trustworthy</span>{' '}
+          The <span style={{ fontWeight: 600 }}>three disciplines</span> you need to ship{' '}
+          <span style={{ fontStyle: 'italic' }}>trustworthy</span>{' '}
           AI into a regulated drafting workflow.
         </div>
 
@@ -137,7 +137,7 @@ function SlideTeam({ index }) {
             >
               {/* Portrait placeholder */}
               <div style={{
-                width: '70%', aspectRatio: '1', marginBottom: 24,
+                width: '55%', aspectRatio: '1', marginBottom: 16,
                 background: `linear-gradient(135deg, #1C1C1C, #0A0A0A)`,
                 border: '1px solid rgba(242,237,228,0.15)',
                 position: 'relative',
@@ -328,8 +328,8 @@ function SlideThanks({ index }) {
           </div>
           <div data-reveal style={{ '--reveal-delay': '1200ms', fontSize: 28, color: 'var(--bone-2)', textAlign: 'center', maxWidth: 1100, fontWeight: 300 }}>
             Code checking should be a{' '}
-            <span style={{ color: 'var(--amber)', fontWeight: 500 }}>background process</span>,<br/>
-            not a <span className="serif" style={{ fontStyle: 'italic', fontWeight: 400, color: 'var(--bone)' }}>permit-ending</span> event.
+            <span style={{ fontWeight: 600 }}>background process</span>,<br/>
+            not a <span style={{ fontStyle: 'italic' }}>permit-ending</span> event.
           </div>
 
           <div data-reveal style={{ '--reveal-delay': '1600ms', display: 'flex', gap: 64, marginTop: 24 }}>
