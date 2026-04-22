@@ -211,6 +211,55 @@ function SlideFlywheel({ index }) {
               </React.Fragment>
             ))}
           </div>
+
+          {/* Timeline compression chart */}
+          <div data-reveal style={{ '--reveal-delay': '2200ms', marginTop: 36, paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.12)' }}>
+            <div className="mono" style={{ fontSize: 9, letterSpacing: '0.26em', color: 'rgba(242,237,228,0.38)', marginBottom: 14 }}>
+              PRE-CONSTRUCTION TIMELINE, PHASE BY PHASE
+            </div>
+            {[
+              { phase: '00', label: 'Existing',  mo: 12, barPx: 560, current: false },
+              { phase: '01', label: 'Architect', mo: 10, barPx: 467, current: true  },
+              { phase: '02', label: 'City',      mo: 6,  barPx: 280, current: false },
+              { phase: '03', label: 'Developer', mo: 2,  barPx: 93,  current: false },
+            ].map((row, i) => (
+              <div key={row.phase} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+                <div className="mono" style={{ width: 130, fontSize: 12, flexShrink: 0, color: row.current ? '#DC2626' : 'rgba(242,237,228,0.5)' }}>
+                  <span style={{ opacity: 0.5 }}>{row.phase}</span>{'  '}{row.label}
+                </div>
+                {/* two-segment bar: solid left + faint right to 560px */}
+                <div style={{ position: 'relative', width: 560, height: 8, flexShrink: 0 }}>
+                  {/* full track ghost */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(242,237,228,0.07)', borderRadius: 2 }} />
+                  {/* filled portion */}
+                  <div
+                    className="fw-bar"
+                    style={{
+                      '--fw-w': `${row.barPx}px`,
+                      '--fw-delay': `${2400 + i * 180}ms`,
+                      position: 'absolute', left: 0, top: 0, height: '100%',
+                      background: row.current ? '#DC2626' : 'rgba(242,237,228,0.28)',
+                      borderRadius: 2,
+                    }}
+                  />
+                  {/* inner solid accent (left 30%) */}
+                  <div
+                    className="fw-bar-accent"
+                    style={{
+                      '--fw-w': `${Math.round(row.barPx * 0.32)}px`,
+                      '--fw-delay': `${2500 + i * 180}ms`,
+                      position: 'absolute', left: 0, top: 0, height: '100%',
+                      background: row.current ? '#991B1B' : 'rgba(242,237,228,0.55)',
+                      borderRadius: 2,
+                    }}
+                  />
+                </div>
+                <div className="mono" style={{ fontSize: 12, color: row.current ? '#DC2626' : 'rgba(242,237,228,0.45)', flexShrink: 0 }}>
+                  {row.mo} mo
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Right column — animated flywheel SVG */}
@@ -285,99 +334,80 @@ function FwNodeAdd({ cx, cy, label, kicker, sub, tone, delay, shown }) {
 
 /* ============ NEW · COMPETITION ============ */
 function SlideCompetition({ index }) {
-  const competitors = [
-    { name: 'UpCodes',       raised: '$7.64M', what: 'Searchable code database and AI research assistant. Web based.', limit: 'Reads the rule book; never sees the model.' },
-    { name: 'CodeComply.Ai', raised: '$2M',    what: 'Automated plan review. Upload PDFs, receive reports.', limit: 'Reviews the paper, not the pencil.' },
-    { name: 'Permitify',     raised: '$500K',  what: 'AI plan review for building departments. Web based.', limit: 'Good for clerks; invisible to architects.' },
-    { name: 'Cuniform',      raised: '—',      what: 'Real-time second reader living inside the 3D canvas.', limit: 'Assist, not review. In the pen, not the paper.', us: true },
+  const COL_W = '180px 90px 190px 260px 200px 1fr';
+  const cols = ['COMPANY','RAISED','STANCE','WORKFLOW','ADOPTION','THE LIMIT'];
+  const rows = [
+    { name: 'UpCodes',       raised: '$33.5M', stance: 'Code search + reference',  workflow: 'Web app · reads code only',     adoption: 'Separate browser tool',  limit: 'Reads the rule book; never sees the model.' },
+    { name: 'CodeComply.Ai', raised: '$2.0M',  stance: 'PDF plan review',          workflow: 'Upload drawings after-the-fact', adoption: 'Post-design audit',       limit: 'Reviews the paper, not the pencil.' },
+    { name: 'Permitify',     raised: '$500K',  stance: 'City-side permit portal',  workflow: 'Municipal workflow tool',        adoption: 'Sells to cities',          limit: 'Good for clerks; invisible to architects.' },
   ];
+  const us = { name: 'Cuniform', raised: '—', stance: 'Real-time second reader', workflow: 'Inside the 3D design canvas', adoption: 'Zero-friction plug-in', limit: 'Assist, not just review. Pencil, not paper.' };
+  const callouts = [
+    { tag: 'EASE OF ADOPTION',  title: 'Integrated in the pen, not the paper.', body: 'No new file format, no second window, no parallel workflow. The plug-in lives inside the 3D software architects already open every morning.' },
+    { tag: 'ASSIST, NOT REVIEW', title: 'GitHub Copilot, not code-review.', body: "Flags appear while the model is being drawn — not weeks later in a markup returned from a consultant. Fix it while it's cheap to fix.", accent: true },
+    { tag: 'CITED, NOT OPAQUE',  title: 'Every flag links to the code line.', body: 'Architects can read, argue, override. No black box; no false confidence. Competitors either do not cite, or cannot.' },
+  ];
+
   return (
-    <Slide index={index} total={TOTAL} section="11 · Competition" label="Competition" tone="dark">
-      <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 110px', display: 'flex', flexDirection: 'column' }}>
-        <h2 className="serif" style={{
-          fontSize: 80, lineHeight: 1.02, letterSpacing: '-0.02em',
-          fontWeight: 400, margin: '0 0 48px', color: 'var(--bone)',
-        }}>
+    <Slide index={index} total={TOTAL} section="11 · Competition" label="Competition" tone="paper">
+      <div style={{ position: 'absolute', inset: 0, padding: '100px 120px 90px', display: 'flex', flexDirection: 'column' }}>
+
+        <h2 className="serif" style={{ fontSize: 72, lineHeight: 1.02, letterSpacing: '-0.02em', fontWeight: 400, margin: '0 0 32px', color: 'var(--ink)' }}>
           <span data-wipe style={{ '--reveal-delay': '100ms' }}>A category of three —</span>{' '}
-          <span data-wipe style={{ '--reveal-delay': '500ms' }}>none <span style={{ fontStyle: 'italic', color: 'var(--amber)' }}>inside the canvas.</span></span>
+          <span data-wipe style={{ '--reveal-delay': '500ms' }}>none <span style={{ fontStyle: 'italic', color: '#DC2626' }}>inside the canvas.</span></span>
         </h2>
 
-        {/* PRE-CONSTRUCTION TIMELINE BAR CHART */}
-        <div data-reveal style={{ '--reveal-delay': '1300ms', marginTop: 48, marginBottom: 0 }}>
-          <div className="mono" style={{ fontSize: 13, letterSpacing: 2, opacity: 0.5, marginBottom: 16 }}>
-            PRE-CONSTRUCTION TIMELINE — WITHOUT VS WITH CUNIFORM
+        {/* Table */}
+        <div data-reveal style={{ '--reveal-delay': '700ms' }}>
+          {/* Header */}
+          <div style={{ display: 'grid', gridTemplateColumns: COL_W, gap: 16, paddingBottom: 10, borderBottom: '1.5px solid var(--ink)' }}>
+            {cols.map(c => (
+              <div key={c} className="mono" style={{ fontSize: 10, letterSpacing: '0.24em', color: 'rgba(10,10,10,0.38)', fontWeight: 600 }}>{c}</div>
+            ))}
           </div>
-          {[
-            { label: 'Design & compliance check', withoutW: 480, withW: 240, savings: '2× faster',   barDelay: '1400ms' },
-            { label: 'Consultant review loop',    withoutW: 420, withW: 120, savings: 'cut 70%',      barDelay: '1550ms' },
-            { label: 'City permit review',        withoutW: 540, withW: 360, savings: 'weeks saved',  barDelay: '1700ms' },
-            { label: 'Total pre-construction',    withoutW: 600, withW: 288, savings: '12mo → 6mo',   barDelay: '1850ms' },
-          ].map((row, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12 }}>
-              <div className="mono" style={{ width: 220, fontSize: 13, opacity: 0.6, flexShrink: 0 }}>{row.label}</div>
-              <div style={{ height: 6, background: 'rgba(242,237,228,0.2)', borderRadius: 2, flexShrink: 0, width: row.withoutW }} />
-              <div
-                className="bar-with"
-                style={{
-                  '--bar-w': `${row.withW}px`,
-                  '--bar-delay': row.barDelay,
-                  height: 6,
-                  background: '#DC2626',
-                  borderRadius: 2,
-                }}
-              />
-              <div
-                className="mono"
-                data-reveal
-                style={{ '--reveal-delay': `${parseInt(row.barDelay) + 200}ms`, fontSize: 11, color: '#DC2626', letterSpacing: 2, marginLeft: 12 }}
-              >
-                {row.savings}
-              </div>
+
+          {/* Competitor rows */}
+          {rows.map((r, i) => (
+            <div key={r.name} data-reveal style={{ '--reveal-delay': `${800 + i * 110}ms`, display: 'grid', gridTemplateColumns: COL_W, gap: 16, padding: '16px 0', borderBottom: '1px solid rgba(10,10,10,0.1)', alignItems: 'center' }}>
+              <div style={{ fontSize: 20, fontWeight: 500, color: 'var(--ink)' }}>{r.name}</div>
+              <div className="serif" style={{ fontSize: 17, fontStyle: 'italic', color: 'rgba(10,10,10,0.45)' }}>{r.raised}</div>
+              <div style={{ fontSize: 15, color: 'var(--ink)', fontWeight: 300 }}>{r.stance}</div>
+              <div style={{ fontSize: 15, color: 'var(--ink)', fontWeight: 300 }}>{r.workflow}</div>
+              <div style={{ fontSize: 15, color: 'var(--ink)', fontWeight: 300 }}>{r.adoption}</div>
+              <div style={{ fontSize: 15, fontStyle: 'italic', color: 'rgba(10,10,10,0.5)', fontWeight: 300 }}>{r.limit}</div>
             </div>
           ))}
+
+          {/* Cuniform row — dark */}
+          <div data-reveal style={{ '--reveal-delay': '1130ms', display: 'grid', gridTemplateColumns: COL_W, gap: 16, padding: '16px 20px', margin: '0 -20px', alignItems: 'center', background: 'var(--ink)' }}>
+            <div>
+              <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', color: '#DC2626' }}>{us.name}</div>
+              <div className="mono" style={{ fontSize: 8, letterSpacing: '0.24em', color: 'rgba(242,237,228,0.35)', marginTop: 3 }}>US</div>
+            </div>
+            <div className="serif" style={{ fontSize: 17, fontStyle: 'italic', color: 'rgba(242,237,228,0.35)' }}>{us.raised}</div>
+            <div style={{ fontSize: 15, color: 'var(--bone)', fontWeight: 300 }}>{us.stance}</div>
+            <div style={{ fontSize: 15, color: 'var(--bone)', fontWeight: 300 }}>{us.workflow}</div>
+            <div style={{ fontSize: 15, color: 'var(--bone)', fontWeight: 300 }}>{us.adoption}</div>
+            <div style={{ fontSize: 15, fontStyle: 'italic', color: '#DC2626', fontWeight: 400 }}>{us.limit}</div>
+          </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, flex: 1 }}>
-          {competitors.map((c, i) => (
-            <div key={c.name} data-reveal style={{
-              '--reveal-delay': `${700 + i * 140}ms`,
-              '--reveal-y': '36px',
-              background: c.us ? 'rgba(242,237,228,0.08)' : 'rgba(255,255,255,0.03)',
-              border: c.us ? '2px solid var(--bone)' : '1px solid rgba(242,237,228,0.1)',
-              padding: '32px 28px',
-              display: 'flex', flexDirection: 'column',
-              color: 'var(--bone)',
+        {/* Three callout cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginTop: 'auto', paddingTop: 20 }}>
+          {callouts.map((c, i) => (
+            <div key={c.tag} data-reveal style={{
+              '--reveal-delay': `${1350 + i * 130}ms`,
+              border: c.accent ? '1.5px solid #DC2626' : '1px solid rgba(10,10,10,0.12)',
+              padding: '24px 24px',
+              background: c.accent ? 'rgba(220,38,38,0.04)' : 'transparent',
             }}>
-              <div className="mono" style={{
-                fontSize: 11, letterSpacing: '0.26em', marginBottom: 14,
-                color: 'rgba(242,237,228,0.4)',
-              }}>{c.raised}</div>
-
-              <div className="serif" style={{
-                fontSize: 44, lineHeight: 1, fontStyle: 'italic',
-                letterSpacing: '-0.015em', marginBottom: 18,
-                color: 'var(--bone)',
-              }}>{c.name}</div>
-
-              <div style={{
-                fontSize: 18, lineHeight: 1.5, fontWeight: 300,
-                color: 'var(--bone-2)',
-              }}>{c.what}</div>
-
-              <div style={{ marginTop: 'auto', paddingTop: 24, borderTop: '1px solid rgba(242,237,228,0.1)' }}>
-                <div className="mono" style={{
-                  fontSize: 10, letterSpacing: '0.26em', marginBottom: 10,
-                  color: 'rgba(242,237,228,0.4)',
-                }}>{c.us ? 'OUR POSITION' : 'THE LIMIT'}</div>
-                <div style={{
-                  fontSize: 19, lineHeight: 1.4, fontStyle: 'italic',
-                  color: 'var(--bone)',
-                  fontWeight: c.us ? 500 : 300,
-                }}>{c.limit}</div>
-              </div>
+              <div className="mono" style={{ fontSize: 9, letterSpacing: '0.26em', color: c.accent ? '#DC2626' : 'rgba(10,10,10,0.38)', marginBottom: 12, fontWeight: 700 }}>{c.tag}</div>
+              <div className="serif" style={{ fontSize: 24, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--ink)', marginBottom: 12 }}>{c.title}</div>
+              <div style={{ fontSize: 15, lineHeight: 1.55, color: 'rgba(10,10,10,0.55)', fontWeight: 300 }}>{c.body}</div>
             </div>
           ))}
         </div>
+
       </div>
     </Slide>
   );

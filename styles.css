@@ -381,3 +381,8 @@ deck-stage { background: var(--ink); }
 /* Competition slide — pre-construction timeline bars */
 .bar-with { width: 0; transition: width 900ms cubic-bezier(.4,0,.2,1) var(--bar-delay); flex-shrink: 0; }
 .slide[data-active] .bar-with { width: var(--bar-w) !important; }
+
+/* Flywheel slide — phase timeline bars */
+.fw-bar, .fw-bar-accent { width: 0; transition: width 800ms cubic-bezier(.4,0,.2,1) var(--fw-delay); }
+.slide[data-active] .fw-bar { width: var(--fw-w) !important; }
+.slide[data-active] .fw-bar-accent { width: var(--fw-w) !important; }
