@@ -242,19 +242,104 @@ function SlideRoadmap({ index }) {
   );
 }
 
+/* ============ 13 GO TO MARKET ============ */
+function SlideGoToMarket({ index }) {
+  return (
+    <Slide index={index} total={TOTAL} section="13 · Go To Market" label="Go To Market" tone="paper">
+      <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px', display: 'flex', flexDirection: 'column' }}>
+
+        {/* Headline */}
+        <div className="serif" style={{ fontSize: 112, lineHeight: 1.0, letterSpacing: '-0.02em', fontStyle: 'italic', fontWeight: 400, color: 'var(--ink)' }}>
+          <span data-wipe style={{ '--reveal-delay': '200ms' }}>One beachhead.</span>{' '}
+          <span data-wipe style={{ '--reveal-delay': '500ms', color: '#DC2626' }}>Three expanding markets.</span>
+        </div>
+
+        {/* Subhead */}
+        <div data-reveal style={{ '--reveal-delay': '900ms', fontSize: 26, fontWeight: 300, maxWidth: 900, marginTop: 32, color: 'rgba(10,10,10,0.65)', lineHeight: 1.5 }}>
+          Founder-led through Phase 1. No paid acquisition. Every dollar of CAC returns as a named firm in a closed network.
+        </div>
+
+        {/* Three-column phase grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48, marginTop: 60 }}>
+
+          {/* Column 1 — Land */}
+          <div data-reveal style={{ '--reveal-delay': '1100ms', '--reveal-y': '32px', borderTop: '2px solid rgba(10,10,10,0.8)', paddingTop: 28 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 12 }}>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', color: '#DC2626' }}>i.  PHASE 1 · ARCHITECTS</div>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.4 }}>MOVE</div>
+            </div>
+            <div className="serif" style={{ fontSize: 56, fontStyle: 'italic', letterSpacing: '-0.02em', marginBottom: 16, color: 'var(--ink)' }}>Land</div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.5, marginBottom: 12 }}>TARGET · BIM MANAGERS AT 15–100 ARCHITECT FIRMS</div>
+            <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', fontWeight: 600, marginBottom: 12, color: 'var(--ink)' }}>Dead-project pilots.</div>
+            <div style={{ fontSize: 16, lineHeight: 1.5, opacity: 0.7, fontWeight: 300, color: 'var(--ink)' }}>
+              Run Cuniform on a completed, permitted project. Every missed violation becomes cost-equivalent proof in the Principal review. Zero risk to them. Maximum signal to us.
+            </div>
+          </div>
+
+          {/* Column 2 — Expand */}
+          <div data-reveal style={{ '--reveal-delay': '1300ms', '--reveal-y': '32px', borderTop: '2px solid rgba(10,10,10,0.4)', paddingTop: 28 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 12 }}>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', color: 'rgba(10,10,10,0.6)' }}>ii.  PHASE 1 · ARCHITECTS</div>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.4 }}>MOVE</div>
+            </div>
+            <div className="serif" style={{ fontSize: 56, fontStyle: 'italic', letterSpacing: '-0.02em', marginBottom: 16, color: 'var(--ink)' }}>Expand</div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.5, marginBottom: 12 }}>TARGET · PRINCIPALS AND STUDIO DIRECTORS</div>
+            <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', fontWeight: 600, marginBottom: 12, color: 'var(--ink)' }}>Firm-wide standardization.</div>
+            <div style={{ fontSize: 16, lineHeight: 1.5, opacity: 0.7, fontWeight: 300, color: 'var(--ink)' }}>
+              One pilot becomes fifteen seats. The Principal sees the missed-violation report and buys insurance against rejections, not a plug-in. Price accordingly — this is a liability tool, not a productivity app.
+            </div>
+          </div>
+
+          {/* Column 3 — Compound */}
+          <div data-reveal style={{ '--reveal-delay': '1500ms', '--reveal-y': '32px', borderTop: '2px solid rgba(10,10,10,0.4)', paddingTop: 28 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 12 }}>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', color: 'rgba(10,10,10,0.6)' }}>iii.  PHASE 1 · ARCHITECTS</div>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.4 }}>MOVE</div>
+            </div>
+            <div className="serif" style={{ fontSize: 56, fontStyle: 'italic', letterSpacing: '-0.02em', marginBottom: 16, color: 'var(--ink)' }}>Compound</div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.5, marginBottom: 12 }}>TARGET · AIA CHAPTERS · USER GROUPS · REFERRALS</div>
+            <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', fontWeight: 600, marginBottom: 12, color: 'var(--ink)' }}>Architects trust architects.</div>
+            <div style={{ fontSize: 16, lineHeight: 1.5, opacity: 0.7, fontWeight: 300, color: 'var(--ink)' }}>
+              Every case study is one Principal quoting numbers to another. AEC runs on professional trust — one named firm in your portfolio unlocks the next ten. Community-led growth replaces paid acquisition entirely.
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom two-column: Phase 2 & 3 */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, marginTop: 48, paddingTop: 32, borderTop: '1px solid rgba(10,10,10,0.12)' }}>
+          <div data-reveal style={{ '--reveal-delay': '1800ms' }}>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', opacity: 0.45, marginBottom: 10 }}>PHASE 2 · CITIES</div>
+            <div style={{ fontSize: 15, fontStyle: 'italic', fontWeight: 300, lineHeight: 1.5, opacity: 0.65, color: 'var(--ink)' }}>
+              Free pilots to backlog-crushed municipalities — NYC, LA, Florida metros. Convert to per-submission fees once backlogs clear. Cities become a distribution channel, not just a market.
+            </div>
+          </div>
+          <div data-reveal style={{ '--reveal-delay': '1900ms' }}>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', opacity: 0.45, marginBottom: 10 }}>PHASE 3 · DEVELOPERS</div>
+            <div style={{ fontSize: 15, fontStyle: 'italic', fontWeight: 300, lineHeight: 1.5, opacity: 0.65, color: 'var(--ink)' }}>
+              Design partners among GCs building repeat typologies — multi-family, self-storage, healthcare. Sold on time-to-break-ground, not compliance. The same engine, a different buyer.
+            </div>
+          </div>
+        </div>
+
+        <ChromeBottom left="© Cuniform Tech 2026" right="Confidential" />
+      </div>
+    </Slide>
+  );
+}
+
 /* ============ 14 ASK ============ */
 function SlideAsk({ index }) {
   return (
-    <Slide index={index} total={TOTAL} section="13 · Ask" label="The Ask" tone="dark" noChrome>
+    <Slide index={index} total={TOTAL} section="14 · Ask" label="The Ask" tone="dark" noChrome>
       {/* Big type ask */}
       <div style={{ position: 'absolute', inset: 0, padding: '100px 120px 90px' }}>
         <div className="chrome-top">
           <div className="chrome-label">
             <span className="dot" />
-            13 · THE ASK
+            14 · THE ASK
           </div>
           <div className="rule" data-reveal style={{ '--reveal-delay': '200ms' }} />
-          <div className="chrome-num">13 <span style={{ opacity: 0.45 }}>/ 14</span></div>
+          <div className="chrome-num">14 <span style={{ opacity: 0.45 }}>/ 15</span></div>
         </div>
 
         <div style={{ marginTop: 80 }}>
@@ -298,12 +383,12 @@ function SlideAsk({ index }) {
 /* ============ 15 THANK YOU / CONTACT ============ */
 function SlideThanks({ index }) {
   return (
-    <Slide index={index} total={TOTAL} section="14 · Contact" label="Thank You" tone="dark" noChrome>
+    <Slide index={index} total={TOTAL} section="15 · Contact" label="Thank You" tone="dark" noChrome>
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
         <div className="chrome-top">
-          <div className="chrome-label"><span className="dot" />14 · THANK YOU</div>
+          <div className="chrome-label"><span className="dot" />15 · THANK YOU</div>
           <div className="rule" data-reveal style={{ '--reveal-delay': '200ms' }} />
-          <div className="chrome-num">14 <span style={{ opacity: 0.45 }}>/ 14</span></div>
+          <div className="chrome-num">15 <span style={{ opacity: 0.45 }}>/ 15</span></div>
         </div>
 
         <div style={{
@@ -351,5 +436,5 @@ function ContactBlock({ label, value }) {
 }
 
 Object.assign(window, {
-  SlideTraction, SlideTeam, SlideRoadmap, SlideAsk, SlideThanks,
+  SlideTraction, SlideTeam, SlideRoadmap, SlideGoToMarket, SlideAsk, SlideThanks,
 });

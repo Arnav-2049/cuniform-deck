@@ -2,7 +2,7 @@
    Slides 01–05: Cover, Thesis, Problem, Rework Loop, Validation
    ────────────────────────────────────────────────────────────── */
 
-const TOTAL = 19;
+const TOTAL = 20;
 
 /* ============ 01 COVER ============ */
 function SlideCover({ index }) {
@@ -68,7 +68,7 @@ function SlideCover({ index }) {
             fontWeight: 300,
           }}
         >
-          Real time building code compliance<br/>for the AEC industry.
+          Real-time code compliance for everyone who touches a building before it's built.
         </div>
 
         <div
