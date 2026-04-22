@@ -66,8 +66,18 @@ function SlidePitch({ index }) {
 
 /* ============ NEW · THE INSIGHT ============ */
 function SlideInsight({ index }) {
+  const innerRef = useRef(null);
+  const isActive = useSlideActive(innerRef);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    if (!isActive) { setShown(false); return; }
+    const t = setTimeout(() => setShown(true), 300);
+    return () => clearTimeout(t);
+  }, [isActive]);
+
   return (
     <Slide index={index} total={TOTAL} section="04 · Insight" label="The Insight" tone="dark">
+      <div ref={innerRef} style={{ display: 'contents' }}>
       <div style={{ position: 'absolute', inset: 0, padding: '150px 120px 110px', display: 'flex', flexDirection: 'column' }}>
 
         <h2 className="serif" style={{
@@ -84,15 +94,43 @@ function SlideInsight({ index }) {
 
           {/* Architect side */}
           <div data-reveal style={{ '--reveal-delay': '900ms' }}>
-            <div data-reveal style={{ '--reveal-delay': '600ms', marginBottom: 12 }}>
-              <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect data-draw style={{ '--draw-len': '130', '--reveal-delay': '600ms' }} x="2" y="4" width="28" height="28" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
-                <line data-draw style={{ '--draw-len': '130', '--reveal-delay': '600ms' }} x1="18" y1="4" x2="18" y2="32" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" />
-                <path data-reveal style={{ '--reveal-delay': '1000ms' }} d="M 18 24 A 8 8 0 0 1 26 24" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
-                <line x1="34" y1="8" x2="44" y2="8" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.4" />
-                <circle data-reveal style={{ '--reveal-delay': '1000ms' }} cx="44" cy="8" r="2.5" fill="rgba(10,10,10,0.6)" stroke="none" />
-              </svg>
-            </div>
+            {/* Floor-plan micro animation */}
+            <svg width="80" height="60" viewBox="0 0 80 60" fill="none" style={{ marginBottom: 16, display: 'block' }}>
+              {/* Outer floor-plan rect drawing in */}
+              <rect x="2" y="4" width="46" height="40"
+                stroke="rgba(242,237,228,0.55)" strokeWidth="1.4"
+                strokeDasharray="172" strokeDashoffset={shown ? 0 : 172}
+                style={{ transition: 'stroke-dashoffset 900ms cubic-bezier(.4,.7,.3,1) 400ms' }} />
+              {/* Interior partition */}
+              <line x1="28" y1="4" x2="28" y2="44"
+                stroke="rgba(242,237,228,0.38)" strokeWidth="1.2"
+                strokeDasharray="40" strokeDashoffset={shown ? 0 : 40}
+                style={{ transition: 'stroke-dashoffset 500ms cubic-bezier(.4,.7,.3,1) 1000ms' }} />
+              {/* Door arc */}
+              <path d="M 28 36 A 10 10 0 0 1 38 36"
+                stroke="rgba(242,237,228,0.35)" strokeWidth="1.2" fill="none"
+                strokeDasharray="16" strokeDashoffset={shown ? 0 : 16}
+                style={{ transition: 'stroke-dashoffset 400ms 1300ms' }} />
+              {/* Pencil cursor dashed line */}
+              <line x1="56" y1="14" x2="72" y2="14"
+                stroke="rgba(242,237,228,0.2)" strokeWidth="1.2"
+                strokeDasharray="2 3" />
+              {/* Active cursor dot */}
+              <circle cx="72" cy="14" r="3"
+                fill="rgba(242,237,228,0.55)"
+                style={{ opacity: shown ? 1 : 0, transition: 'opacity 300ms 1400ms' }} />
+              {/* Red violation flag pops in */}
+              <circle cx="50" cy="8" r="6"
+                fill="#DC2626"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? 'scale(1)' : 'scale(0)',
+                  transformOrigin: '50px 8px',
+                  transition: 'opacity 200ms 1600ms, transform 500ms 1600ms cubic-bezier(.2,1.4,.4,1)',
+                }} />
+              <text x="50" y="12" textAnchor="middle" fontSize="8" fontFamily="Inter" fontWeight="700" fill="white"
+                style={{ opacity: shown ? 1 : 0, transition: 'opacity 200ms 1700ms' }}>!</text>
+            </svg>
             <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, marginBottom: 20 }}>ARCHITECT SIDE</div>
             <div className="serif" style={{ fontSize: 44, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--bone)', marginBottom: 20 }}>
               Work exported, re-imported.
@@ -110,18 +148,49 @@ function SlideInsight({ index }) {
 
           {/* City side */}
           <div data-reveal style={{ '--reveal-delay': '1200ms' }}>
-            <div data-reveal style={{ '--reveal-delay': '600ms', marginBottom: 12 }}>
-              <svg width="64" height="36" viewBox="0 0 64 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect data-draw style={{ '--draw-len': '280', '--reveal-delay': '700ms' }} x="2"  y="16" width="14" height="20" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
-                <rect data-draw style={{ '--draw-len': '280', '--reveal-delay': '700ms' }} x="20" y="4"  width="18" height="32" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
-                <rect data-draw style={{ '--draw-len': '280', '--reveal-delay': '700ms' }} x="42" y="12" width="14" height="24" stroke="rgba(10,10,10,0.5)" strokeWidth="1.5" fill="none" />
-                <g data-reveal style={{ '--reveal-delay': '1200ms' }}>
-                  <circle cx="29" cy="16" r="5" stroke="rgba(10,10,10,0.55)" strokeWidth="1" fill="none" />
-                  <line x1="29" y1="16" x2="29" y2="12" stroke="rgba(10,10,10,0.55)" strokeWidth="1" />
-                  <line x1="29" y1="16" x2="33" y2="16" stroke="rgba(10,10,10,0.55)" strokeWidth="1" />
-                </g>
-              </svg>
-            </div>
+            {/* City skyline + clock micro animation */}
+            <svg width="100" height="60" viewBox="0 0 100 60" fill="none" style={{ marginBottom: 16, display: 'block' }}>
+              {/* Buildings drawing in staggered */}
+              {[
+                { x: 2,  y: 28, w: 16, h: 32, len: 96  },
+                { x: 22, y: 8,  w: 22, h: 52, len: 148 },
+                { x: 48, y: 18, w: 16, h: 42, len: 116 },
+                { x: 68, y: 24, w: 14, h: 36, len: 100 },
+              ].map((b, i) => (
+                <rect key={i} x={b.x} y={b.y} width={b.w} height={b.h}
+                  stroke="rgba(242,237,228,0.45)" strokeWidth="1.3" fill="none"
+                  strokeDasharray={b.len} strokeDashoffset={shown ? 0 : b.len}
+                  style={{ transition: `stroke-dashoffset 700ms cubic-bezier(.4,.7,.3,1) ${500 + i * 110}ms` }} />
+              ))}
+              {/* Clock face on tallest building */}
+              <circle cx="33" cy="22" r="7"
+                stroke="rgba(242,237,228,0.5)" strokeWidth="1" fill="none"
+                style={{ opacity: shown ? 1 : 0, transition: 'opacity 400ms 1050ms' }} />
+              <circle cx="33" cy="22" r="1.5" fill="var(--amber)"
+                style={{ opacity: shown ? 1 : 0, transition: 'opacity 400ms 1100ms' }} />
+              {/* Hour hand fixed */}
+              <line x1="33" y1="22" x2="30" y2="17"
+                stroke="rgba(242,237,228,0.55)" strokeWidth="1.2" strokeLinecap="round"
+                style={{ opacity: shown ? 1 : 0, transition: 'opacity 300ms 1150ms' }} />
+              {/* Minute hand sweeps clockwise */}
+              <line x1="33" y1="22" x2="33" y2="15"
+                stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transformOrigin: '33px 22px',
+                  transform: shown ? 'rotate(270deg)' : 'rotate(0deg)',
+                  transition: 'opacity 300ms 1200ms, transform 2400ms 1300ms cubic-bezier(.4,.7,.3,1)',
+                }} />
+              {/* Backlog queue bars (stacked horizontal lines) */}
+              {[0, 1, 2].map(i => (
+                <line key={i}
+                  x1="70" y1={30 + i * 9} x2="70" y2={30 + i * 9}
+                  stroke="rgba(242,237,228,0.28)" strokeWidth="6" strokeLinecap="round"
+                  strokeDasharray={`${14 - i * 3} 100`}
+                  strokeDashoffset={shown ? -(14 - i * 3) : 0}
+                  style={{ transition: `stroke-dashoffset 400ms ${1400 + i * 120}ms` }} />
+              ))}
+            </svg>
             <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', fontWeight: 700, marginBottom: 20 }}>CITY SIDE</div>
             <div className="serif" style={{ fontSize: 44, fontStyle: 'italic', lineHeight: 1.1, color: 'var(--bone)', marginBottom: 32 }}>
               Understaffed. Over-backlogged.
@@ -149,6 +218,7 @@ function SlideInsight({ index }) {
             Architects pay for seats; cities pay to clear the backlog.
           </div>
         </div>
+      </div>
       </div>
     </Slide>
   );
