@@ -429,13 +429,6 @@ function SlideMarket({ index }) {
           Architects are the beachhead. At 10% penetration of 4,500 mid-market firms — before a single engineer or contractor — that's $27M ARR. Civil engineers triple the addressable seats. The SAM expands to $580M without changing the product.
         </div>
 
-        <div data-reveal style={{ '--reveal-delay': '2200ms', marginTop: 40, border: '1px solid rgba(255,255,255,0.12)', padding: '20px 24px', maxWidth: 900 }}>
-          <div className="mono" style={{ fontSize: 11, letterSpacing: 3, color: 'var(--amber)', marginBottom: 10 }}>BOTTOM-UP CHECK</div>
-          <div style={{ fontSize: 15, fontWeight: 300, color: 'var(--bone-2)' }}>
-            4,500 firms × 30 seats × $59/seat/mo × 12 ={' '}
-            <span style={{ fontWeight: 600, color: 'var(--amber)' }}>~$96M ARR at 10% US penetration</span>
-          </div>
-        </div>
       </div>
     </Slide>
   );
