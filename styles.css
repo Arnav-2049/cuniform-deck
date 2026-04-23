@@ -386,3 +386,34 @@ deck-stage { background: var(--ink); }
 .fw-bar, .fw-bar-accent { width: 0; transition: width 800ms cubic-bezier(.4,0,.2,1) var(--fw-delay); }
 .slide[data-active] .fw-bar { width: var(--fw-w) !important; }
 .slide[data-active] .fw-bar-accent { width: var(--fw-w) !important; }
+
+/* ── Cover ticker ── */
+.ticker-wrap {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.15em;
+  vertical-align: bottom;
+  min-width: 220px;
+}
+.ticker-word {
+  display: inline-block;
+  position: relative;
+  color: var(--amber, #FF7A1A);
+  font-style: italic;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0ms, opacity 0ms;
+}
+.ticker-word.visible {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 200ms ease;
+}
+.ticker-word.exit {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 260ms cubic-bezier(0.55, 0, 1, 0.45),
+              opacity 180ms ease;
+}

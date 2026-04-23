@@ -5,10 +5,59 @@
 const TOTAL = 20;
 
 /* ============ 01 COVER ============ */
+const TICKER_WORDS = ['architects', 'cities', 'developers', 'everyone'];
+
+function useCoverTicker(isActive) {
+  const elRef = useRef(null);
+  const timerRef = useRef(null);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    if (!isActive) return;
+    if (startedRef.current) return;
+    startedRef.current = true;
+
+    let i = 0;
+
+    function showWord(index) {
+      const el = elRef.current;
+      if (!el) return;
+      el.textContent = TICKER_WORDS[index];
+      el.className = 'ticker-word';
+      void el.offsetHeight;
+      el.classList.add('visible');
+    }
+
+    function next() {
+      const el = elRef.current;
+      if (!el || i >= TICKER_WORDS.length) return;
+      showWord(i);
+      i++;
+      if (i < TICKER_WORDS.length) {
+        timerRef.current = setTimeout(() => {
+          if (!el) return;
+          el.classList.add('exit');
+          el.addEventListener('transitionend', () => {
+            el.className = 'ticker-word';
+            timerRef.current = setTimeout(next, 60);
+          }, { once: true });
+        }, 900);
+      }
+    }
+
+    timerRef.current = setTimeout(next, 1800);
+
+    return () => clearTimeout(timerRef.current);
+  }, [isActive]);
+
+  return elRef;
+}
+
 function SlideCover({ index }) {
   const activeIdx = useActiveSlideIndex();
   const isActive = activeIdx === index;
   const ref = useRef(null);
+  const tickerRef = useCoverTicker(isActive);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -68,7 +117,11 @@ function SlideCover({ index }) {
             fontWeight: 300,
           }}
         >
-          Real-time code compliance for everyone who touches a building before it's built.
+          Real-time code compliance for{' '}
+          <span className="ticker-wrap">
+            <span className="ticker-word" ref={tickerRef}></span>
+          </span>
+          {' '}who touches a building before it's built.
         </div>
 
         <div
