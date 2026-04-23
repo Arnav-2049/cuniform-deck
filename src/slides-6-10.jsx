@@ -359,48 +359,66 @@ function SlideMarket({ index }) {
     <Slide index={index} total={TOTAL} section="08 · Market" label="Market" tone="dark">
       <div style={{ position: 'absolute', inset: 0, padding: '160px 120px 140px' }}>
         <div className="serif" data-wipe style={{ fontSize: 104, lineHeight: 0.98, letterSpacing: '-0.02em', fontStyle: 'italic', '--reveal-delay': '200ms' }}>
-          A $8.2M <span style={{ color: 'var(--amber)' }}>wedge</span>. A 3× path to expand.
+          A $270M <span style={{ color: 'var(--amber)' }}>wedge</span>. A 20× path to expand.
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 64, marginTop: 100 }}>
-          {[
-            { tier: 'SOM', label: '10% of US architects', value: 8.2, unit: 'M', sub: 'Y1 beachhead · $59/seat/mo', color: 'var(--amber)', delay: 600 },
-            { tier: 'SAM', label: '+ civil engineers & GCs', value: 48, unit: 'M', sub: '~820K licensed seats in US', color: 'var(--bone)', delay: 900 },
-            { tier: 'TAM', label: 'Global AEC software', value: 2.1, unit: 'B', sub: 'All design + review tooling', color: 'var(--bone)', opacity: 0.55, delay: 1200 },
-          ].map((m, i) => (
-            <div
-              key={m.tier}
-              data-reveal
-              style={{
-                '--reveal-delay': `${m.delay}ms`,
-                '--reveal-y': '48px',
-                paddingTop: 32,
-                borderTop: `2px solid ${m.color}`,
-                opacity: m.opacity || 1,
-              }}
-            >
-              <div className="mono" style={{ fontSize: 16, letterSpacing: '0.3em', color: m.color, marginBottom: 20 }}>
-                {m.tier}
-              </div>
-              <div className="serif" style={{ fontSize: 160, lineHeight: 0.9, letterSpacing: '-0.03em', fontStyle: 'italic', color: m.color }}>
-                ${isActive ? <Counter to={m.value} duration={1400} delay={m.delay} active={isActive} format={(n) => n.toFixed(m.value < 10 ? 1 : 0)} /> : m.value}
-                <span style={{ fontSize: 80 }}>{m.unit}</span>
-              </div>
-              <div style={{ fontSize: 28, marginTop: 24, color: m.color, opacity: 0.9 }}>
-                {m.label}
-              </div>
-              <div className="mono" style={{ fontSize: 13, letterSpacing: 2.5, marginTop: 10, opacity: 0.55 }}>
-                {m.sub}
-              </div>
+          {/* SOM */}
+          <div data-reveal style={{ '--reveal-delay': '600ms', '--reveal-y': '48px', paddingTop: 32, borderTop: '2px solid var(--amber)', opacity: 1 }}>
+            <div className="mono" style={{ fontSize: 16, letterSpacing: '0.3em', color: 'var(--amber)', marginBottom: 20 }}>SOM</div>
+            <div className="serif" style={{ fontSize: 160, lineHeight: 0.9, letterSpacing: '-0.03em', fontStyle: 'italic', color: 'var(--amber)' }}>
+              ${isActive ? <Counter to={270} duration={1400} delay={600} active={isActive} format={(n) => n.toFixed(0)} /> : 270}<span style={{ fontSize: 80 }}>M</span>
             </div>
-          ))}
+            <div style={{ fontSize: 24, marginTop: 24, color: 'var(--amber)', opacity: 0.9 }}>
+              Y1 beachhead: <strong>$8.2M</strong>
+            </div>
+            <div style={{ fontSize: 18, marginTop: 12, color: 'var(--bone-2)', fontWeight: 300, lineHeight: 1.4 }}>
+              4,500 US mid-market firms · 30 seats · $59/seat/mo
+            </div>
+            <div className="mono" style={{ fontSize: 13, letterSpacing: 2.5, marginTop: 10, opacity: 0.55 }}>
+              10% PENETRATION TARGET
+            </div>
+          </div>
+
+          {/* SAM */}
+          <div data-reveal style={{ '--reveal-delay': '900ms', '--reveal-y': '48px', paddingTop: 32, borderTop: '2px solid var(--bone)', opacity: 1 }}>
+            <div className="mono" style={{ fontSize: 16, letterSpacing: '0.3em', color: 'var(--bone)', marginBottom: 20 }}>SAM</div>
+            <div className="serif" style={{ fontSize: 160, lineHeight: 0.9, letterSpacing: '-0.03em', fontStyle: 'italic', color: 'var(--bone)' }}>
+              ${isActive ? <Counter to={580} duration={1400} delay={900} active={isActive} format={(n) => n.toFixed(0)} /> : 580}<span style={{ fontSize: 80 }}>M</span>
+            </div>
+            <div style={{ fontSize: 28, marginTop: 24, color: 'var(--bone)', opacity: 0.9 }}>
+              + civil engineers &amp; GCs
+            </div>
+            <div className="mono" style={{ fontSize: 13, letterSpacing: 2.5, marginTop: 10, opacity: 0.55 }}>
+              820K LICENSED BIM SEATS IN US · $59/SEAT/MO
+            </div>
+          </div>
+
+          {/* TAM */}
+          <div data-reveal style={{ '--reveal-delay': '1200ms', '--reveal-y': '48px', paddingTop: 32, borderTop: '2px solid var(--bone)', opacity: 0.55 }}>
+            <div className="mono" style={{ fontSize: 16, letterSpacing: '0.3em', color: 'var(--bone)', marginBottom: 20 }}>TAM</div>
+            <div className="serif" style={{ fontSize: 160, lineHeight: 0.9, letterSpacing: '-0.03em', fontStyle: 'italic', color: 'var(--bone)' }}>
+              ${isActive ? <Counter to={11.7} duration={1400} delay={1200} active={isActive} format={(n) => n.toFixed(1)} /> : 11.7}<span style={{ fontSize: 80 }}>B</span>
+            </div>
+            <div style={{ fontSize: 28, marginTop: 24, color: 'var(--bone)', opacity: 0.9 }}>
+              Global AEC software
+            </div>
+            <div className="mono" style={{ fontSize: 13, letterSpacing: 2.5, marginTop: 10, opacity: 0.55 }}>
+              ALL DESIGN + REVIEW TOOLING · MORDOR INTELLIGENCE 2025
+            </div>
+          </div>
         </div>
 
         <div data-reveal style={{ '--reveal-delay': '1800ms', marginTop: 80, fontSize: 26, color: 'var(--bone-2)', opacity: 0.7, maxWidth: 1200, fontWeight: 300 }}>
-          Architects are the beachhead. Civil engineers{' '}
-          <span style={{ fontStyle: 'italic' }}>triple</span>{' '}
-          the seats. Contractors add{' '}
-          <span style={{ fontWeight: 600 }}>700K</span> more.
+          Architects are the beachhead. At 10% penetration of 4,500 mid-market firms — before a single engineer or contractor — that's $27M ARR. Civil engineers triple the addressable seats. The SAM expands to $580M without changing the product.
+        </div>
+
+        <div data-reveal style={{ '--reveal-delay': '2200ms', marginTop: 40, border: '1px solid rgba(255,255,255,0.12)', padding: '20px 24px', maxWidth: 900 }}>
+          <div className="mono" style={{ fontSize: 11, letterSpacing: 3, color: 'var(--amber)', marginBottom: 10 }}>BOTTOM-UP CHECK</div>
+          <div style={{ fontSize: 15, fontWeight: 300, color: 'var(--bone-2)' }}>
+            4,500 firms × 30 seats × $59/seat/mo × 12 ={' '}
+            <span style={{ fontWeight: 600, color: 'var(--amber)' }}>~$96M ARR at 10% US penetration</span>
+          </div>
         </div>
       </div>
     </Slide>
