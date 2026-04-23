@@ -46,7 +46,7 @@ function SlidePitch({ index }) {
             <div style={{ width: 56, height: 2, background: 'var(--bone)', marginBottom: 18 }} />
             <div style={{ fontSize: 28, lineHeight: 1.45, color: 'var(--bone)', fontWeight: 300 }}>
               We are an <span className="serif" style={{ fontStyle: 'italic' }}>AI second-reader</span> that lives inside the 3D modeling software every architect already uses. It checks the building against the code{' '}
-              <span style={{ fontWeight: 600 }}>as the building is drawn</span> — and flags violations in real time, with citations.
+              <span style={{ fontWeight: 600 }}>as the building is drawn</span>, flagging violations in real time, with citations.
             </div>
           </div>
           <div data-reveal style={{ '--reveal-delay': '1300ms' }}>
@@ -257,7 +257,7 @@ function SlideFlywheel({ index }) {
             <div style={{ fontSize: 19, lineHeight: 1.5, color: 'var(--bone)', fontWeight: 300, maxWidth: 660 }}>
               The architect is the <span style={{ fontStyle: 'italic' }}>top of the funnel</span>.
               Every firm that adopts Cuniform gives us{' '}
-              <span style={{ fontWeight: 600 }}>the data a city would pay for</span> —
+              <span style={{ fontWeight: 600 }}>the data a city would pay for</span>,
               and every integrated city gives developers a shortcut{' '}
               <span style={{ fontStyle: 'italic', fontWeight: 600 }}>only Cuniform can sell.</span>
             </div>
@@ -414,7 +414,7 @@ function SlideCompetition({ index }) {
   const us = { name: 'Cuniform', raised: '—', stance: 'Real-time second reader', workflow: 'Inside the 3D design canvas', adoption: 'Zero-friction plug-in', limit: 'Assist, not just review. Pencil, not paper.' };
   const callouts = [
     { tag: 'EASE OF ADOPTION',  title: 'Integrated in the pen, not the paper.', body: 'No new file format, no second window, no parallel workflow. The plug-in lives inside the 3D software architects already open every morning.' },
-    { tag: 'ASSIST, NOT REVIEW', title: 'GitHub Copilot, not code-review.', body: "Flags appear while the model is being drawn — not weeks later in a markup returned from a consultant. Fix it while it's cheap to fix.", accent: true },
+    { tag: 'ASSIST, NOT REVIEW', title: 'GitHub Copilot, not code-review.', body: "Flags appear while the model is being drawn. Not weeks later in a markup returned from a consultant. Fix it while it's cheap to fix.", accent: true },
     { tag: 'CITED, NOT OPAQUE',  title: 'Every flag links to the code line.', body: 'Architects can read, argue, override. No black box; no false confidence. Competitors either do not cite, or cannot.' },
   ];
 

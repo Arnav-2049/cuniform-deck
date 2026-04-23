@@ -286,7 +286,7 @@ function SlideGoToMarket({ index }) {
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.5, marginBottom: 12 }}>TARGET · PRINCIPALS AND STUDIO DIRECTORS</div>
             <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', fontWeight: 600, marginBottom: 12, color: 'var(--ink)' }}>Firm-wide standardization.</div>
             <div style={{ fontSize: 16, lineHeight: 1.5, opacity: 0.7, fontWeight: 300, color: 'var(--ink)' }}>
-              One pilot becomes fifteen seats. The Principal sees the missed-violation report and buys insurance against rejections, not a plug-in. Price accordingly — this is a liability tool, not a productivity app.
+              One pilot becomes fifteen seats. The Principal sees the missed-violation report and buys insurance against rejections, not a plug-in. Price accordingly: this is a liability tool, not a productivity app.
             </div>
           </div>
 
@@ -300,7 +300,7 @@ function SlideGoToMarket({ index }) {
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.5, marginBottom: 12 }}>TARGET · AIA CHAPTERS · USER GROUPS · REFERRALS</div>
             <div className="serif" style={{ fontSize: 20, fontStyle: 'italic', fontWeight: 600, marginBottom: 12, color: 'var(--ink)' }}>Architects trust architects.</div>
             <div style={{ fontSize: 16, lineHeight: 1.5, opacity: 0.7, fontWeight: 300, color: 'var(--ink)' }}>
-              Every case study is one Principal quoting numbers to another. AEC runs on professional trust — one named firm in your portfolio unlocks the next ten. Community-led growth replaces paid acquisition entirely.
+              Every case study is one Principal quoting numbers to another. AEC runs on professional trust: one named firm in your portfolio unlocks the next ten. Community-led growth replaces paid acquisition entirely.
             </div>
           </div>
         </div>
@@ -310,13 +310,13 @@ function SlideGoToMarket({ index }) {
           <div data-reveal style={{ '--reveal-delay': '1800ms' }}>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', opacity: 0.45, marginBottom: 10 }}>PHASE 2 · CITIES</div>
             <div style={{ fontSize: 15, fontStyle: 'italic', fontWeight: 300, lineHeight: 1.5, opacity: 0.65, color: 'var(--ink)' }}>
-              Free pilots to backlog-crushed municipalities — NYC, LA, Florida metros. Convert to per-submission fees once backlogs clear. Cities become a distribution channel, not just a market.
+              Free pilots to backlog-crushed municipalities: NYC, LA, Florida metros. Convert to per-submission fees once backlogs clear. Cities become a distribution channel, not just a market.
             </div>
           </div>
           <div data-reveal style={{ '--reveal-delay': '1900ms' }}>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.2em', opacity: 0.45, marginBottom: 10 }}>PHASE 3 · DEVELOPERS</div>
             <div style={{ fontSize: 15, fontStyle: 'italic', fontWeight: 300, lineHeight: 1.5, opacity: 0.65, color: 'var(--ink)' }}>
-              Design partners among GCs building repeat typologies — multi-family, self-storage, healthcare. Sold on time-to-break-ground, not compliance. The same engine, a different buyer.
+              Design partners among GCs building repeat typologies: multi-family, self-storage, healthcare. Sold on time-to-break-ground, not compliance. The same engine, a different buyer.
             </div>
           </div>
         </div>

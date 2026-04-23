@@ -507,7 +507,7 @@ function SlideValidation({ index }) {
   const quotes = [
     '"The tool would have to be quickly verified for accuracy."',
     '"Liability implications mean it must be close to 100% accurate."',
-    '"Codes like the IBC change regularly — it has to keep up."',
+    '"Codes like the IBC change regularly. It has to keep up."',
     '"Data security. We work under NDA for most clients."',
     '"Must have judgment. Like an architect with decades of experience."',
   ];
@@ -546,7 +546,7 @@ function SlideValidation({ index }) {
               '--reveal-delay': '1600ms', maxWidth: 640, fontWeight: 300,
             }}
           >
-            One objection blocked adoption — every time:
+            One objection blocked adoption, every time:
           </div>
           <div
             data-reveal className="serif"
@@ -568,7 +568,7 @@ function SlideValidation({ index }) {
               '--reveal-delay': '2400ms',
             }}
           >
-            So we built accuracy in from the start — not as a feature, but as the foundation. Every flag Cuniform surfaces is cross-referenced, clause-linked, and checked by a second model before you ever see it.
+            So we built accuracy in from the start. Not as a feature, but as the foundation. Every flag Cuniform surfaces is cross-referenced, clause-linked, and checked by a second model before you ever see it.
           </div>
         </div>
 

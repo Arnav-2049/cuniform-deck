@@ -26,9 +26,9 @@ function SlideSolution({ index }) {
 
           <ul style={{ listStyle: 'none', padding: 0, margin: '60px 0 0', display: 'flex', flexDirection: 'column', gap: 18 }}>
             {[
-              ['Inline', 'flags violations as you draw — in Revit, AutoCAD, Rhino.'],
+              ['Inline', 'flags violations as you draw, in Revit, AutoCAD, Rhino.'],
               ['Linked', 'every flag links to the exact IBC, IECC or local-amendment clause.'],
-              ['Verifiable', 'a second model cross-checks every flag before it reaches you — no black box, no false confidence.'],
+              ['Verifiable', 'a second model cross-checks every flag before it reaches you. No black box, no false confidence.'],
             ].map(([title, body], i) => (
               <li key={title} data-reveal style={{ '--reveal-delay': `${1200 + i * 200}ms`, display: 'flex', gap: 20, alignItems: 'baseline' }}>
                 <span style={{ fontSize: 32, fontStyle: 'italic', fontWeight: 600, color: 'var(--amber-deep)', minWidth: 130 }}>
@@ -144,7 +144,7 @@ function RevitMock() {
             Door clear width <strong style={{ color: '#DC2626' }}>32"</strong> below the 44" minimum for occupant load <strong>187</strong>.
           </div>
           <div style={{ fontSize: 12, color: 'rgba(242,237,228,0.55)', fontStyle: 'italic', marginBottom: 14, lineHeight: 1.4 }}>
-            "Means of egress shall provide a minimum clear width…" — IBC 2021
+            "Means of egress shall provide a minimum clear width…" · IBC 2021
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <span style={{ fontSize: 11, fontFamily: 'JetBrains Mono', padding: '6px 10px', borderRadius: 4, background: '#DC2626', color: '#0A0A0A', letterSpacing: 1 }}>FIX</span>
@@ -170,7 +170,7 @@ function RevitMock() {
 /* ============ 07 WHY NOW ============ */
 function SlideWhyNow({ index }) {
   const forces = [
-    { n: '01', t: 'Reasoning models', b: 'LLMs are finally good enough to parse the 1,200 pages of the IBC — plus local amendments — with citations.' },
+    { n: '01', t: 'Reasoning models', b: 'LLMs are finally good enough to parse the 1,200 pages of the IBC, plus local amendments, with citations.' },
     { n: '02', t: 'BIM is open', b: 'Revit, Rhino and AutoCAD all ship stable APIs. We live inside the tool architects already use.' },
     { n: '03', t: 'Permit gridlock', b: 'Post-2023 backlogs stretch review cycles to 8–12 weeks. Firms are desperate for anything that buys speed.' },
   ];
