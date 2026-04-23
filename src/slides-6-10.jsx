@@ -40,8 +40,24 @@ function SlideSolution({ index }) {
           </ul>
         </div>
 
-        {/* Right: mock Revit with flag */}
-        <RevitMock />
+        {/* Right: Revit UI screenshot */}
+        <div
+          data-scale-in
+          style={{
+            '--reveal-delay': '600ms',
+            borderRadius: 12,
+            boxShadow: '0 30px 80px -30px rgba(10,10,10,0.5), 0 0 0 1px rgba(10,10,10,0.08)',
+            overflow: 'hidden',
+            width: '100%',
+            lineHeight: 0,
+          }}
+        >
+          <img
+            src="assets/Group_74.png"
+            alt="Cuniform in Revit — live compliance panel"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
       </div>
     </Slide>
   );
