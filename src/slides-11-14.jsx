@@ -329,51 +329,87 @@ function SlideGoToMarket({ index }) {
 
 /* ============ 14 ASK ============ */
 function SlideAsk({ index }) {
+  const funds = [
+    { label: 'Engineering · product',    pct: 55, delay: 1400 },
+    { label: 'Go-to-market · sales',     pct: 25, delay: 1550 },
+    { label: 'Pilots · design partners', pct: 12, delay: 1700 },
+    { label: 'G&A · reserve',            pct:  8, delay: 1850 },
+  ];
+  const milestones = [
+    { tag: 'MILESTONE · M9',  text: '10 firms · $100K ARR' },
+    { tag: 'MILESTONE · M15', text: '$500K ARR · City beta' },
+    { tag: 'MILESTONE · M18', text: 'Path to $1M ARR · Series A ready' },
+    { tag: 'RUNWAY',          text: '18 months with buffer' },
+  ];
+
   return (
     <Slide index={index} total={TOTAL} section="14 · Ask" label="The Ask" tone="dark" noChrome>
-      {/* Big type ask */}
       <div style={{ position: 'absolute', inset: 0, padding: '100px 120px 90px' }}>
         <div className="chrome-top">
-          <div className="chrome-label">
-            <span className="dot" />
-            14 · THE ASK
-          </div>
+          <div className="chrome-label"><span className="dot" />14 · THE ASK</div>
           <div className="rule" data-reveal style={{ '--reveal-delay': '200ms' }} />
           <div className="chrome-num">14 <span style={{ opacity: 0.45 }}>/ 15</span></div>
         </div>
 
+        {/* Hero amount */}
         <div style={{ marginTop: 80 }}>
           <div className="mono" data-reveal style={{ fontSize: 14, letterSpacing: '0.3em', color: 'var(--amber)', marginBottom: 20 }}>
-            RAISING
+            RAISING A SEED FOR EIGHTEEN MONTHS OF RUNWAY
           </div>
 
           <div className="serif" style={{ fontSize: 240, lineHeight: 0.9, letterSpacing: '-0.04em', fontStyle: 'italic', color: 'var(--bone)' }}>
-            <span data-reveal style={{ '--reveal-delay': '300ms', '--reveal-y': '60px' }}>$1M</span>
+            <span data-reveal style={{ '--reveal-delay': '300ms', '--reveal-y': '60px' }}>$2M</span>
           </div>
 
-          <div data-reveal style={{ '--reveal-delay': '1000ms', fontSize: 32, marginTop: 28, color: 'var(--bone-2)', fontWeight: 300 }}>
-            SAFE · <span style={{ color: 'var(--amber)' }}>$5M post-money cap</span> · Targeting close by <span className="serif" style={{ fontStyle: 'italic' }}>end of Q2</span>.
+          <div data-reveal style={{ '--reveal-delay': '700ms', fontSize: 28, marginTop: 24, color: 'var(--bone-2)', fontWeight: 300 }}>
+            SAFE · <span style={{ color: 'var(--amber)' }}>$10M post-money</span>
+          </div>
+
+          <div className="mono" data-reveal style={{ '--reveal-delay': '800ms', fontSize: 11, letterSpacing: 2, opacity: 0.5, marginTop: 8 }}>
+            MEDIAN SEED VALUATION · AI SAAS 2025 · $14–17M · WE ARE DELIBERATELY FOUNDER-FRIENDLY
+          </div>
+
+          <div data-reveal style={{ '--reveal-delay': '1000ms', fontSize: 22, marginTop: 28, color: 'var(--bone-2)', fontWeight: 300, maxWidth: 900, lineHeight: 1.5 }}>
+            Sized for three founders, two senior engineers, and a design-partner budget that carries us to 25 paying firms, $500K ARR, and the first city pilot — with three months of buffer.
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 64, marginTop: 60, paddingTop: 32, borderTop: '1px solid rgba(242,237,228,0.15)' }}>
-          {[
-            { label: 'USE OF FUNDS', rows: [['50%', 'Engineering'], ['30%', 'Go-to-market'], ['20%', 'Ops & legal']] },
-            { label: 'BUYS US', rows: [['18 mo', 'Runway'], ['$1M', 'ARR by month 18'], ['Series A', 'At $3M ARR']] },
-            { label: 'RESERVED', rows: [['$200K', 'Strategic angel'], ['Open', 'Lead · $500K'], ['Q1', 'First close']] },
-          ].map((col, i) => (
-            <div key={col.label} data-reveal style={{ '--reveal-delay': `${1300 + i * 200}ms` }}>
-              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', marginBottom: 18 }}>
-                {col.label}
-              </div>
-              {col.rows.map(([k, v]) => (
-                <div key={k + v} style={{ display: 'flex', gap: 20, padding: '8px 0', borderBottom: '1px solid rgba(242,237,228,0.08)' }}>
-                  <div className="serif" style={{ fontSize: 24, fontStyle: 'italic', color: 'var(--bone)', minWidth: 90, letterSpacing: '-0.01em' }}>{k}</div>
-                  <div style={{ fontSize: 18, color: 'var(--bone-2)', opacity: 0.75, alignSelf: 'center' }}>{v}</div>
-                </div>
-              ))}
+        {/* Two-column lower section */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, marginTop: 56, paddingTop: 32, borderTop: '1px solid rgba(242,237,228,0.12)' }}>
+
+          {/* Use of funds bars */}
+          <div>
+            <div className="mono" data-reveal style={{ '--reveal-delay': '1300ms', fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', marginBottom: 24 }}>
+              USE OF FUNDS
             </div>
-          ))}
+            {funds.map(({ label, pct, delay }) => (
+              <div key={label} data-reveal style={{ '--reveal-delay': `${delay}ms`, marginBottom: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <div style={{ fontSize: 15, color: 'var(--bone-2)', fontWeight: 300 }}>{label}</div>
+                  <div className="mono" style={{ fontSize: 13, color: 'var(--amber)', opacity: 0.8 }}>{pct}%</div>
+                </div>
+                <div style={{ height: 4, background: 'rgba(242,237,228,0.1)', borderRadius: 2, overflow: 'hidden' }}>
+                  <div
+                    className="bar-with"
+                    style={{ '--bar-w': `${pct}%`, '--bar-delay': `${delay}ms`, height: '100%', background: 'var(--amber)', borderRadius: 2 }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Milestones */}
+          <div>
+            <div className="mono" data-reveal style={{ '--reveal-delay': '1300ms', fontSize: 12, letterSpacing: '0.3em', color: 'var(--amber)', marginBottom: 24 }}>
+              THIS GETS US TO
+            </div>
+            {milestones.map(({ tag, text }, i) => (
+              <div key={tag} data-reveal style={{ '--reveal-delay': `${1400 + i * 150}ms`, display: 'flex', gap: 20, padding: '12px 0', borderBottom: '1px solid rgba(242,237,228,0.08)' }}>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: 1.5, color: 'var(--amber)', opacity: 0.7, minWidth: 140, paddingTop: 3 }}>{tag}</div>
+                <div style={{ fontSize: 18, color: 'var(--bone)', fontWeight: 400 }}>{text}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Slide>
