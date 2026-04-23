@@ -23,36 +23,70 @@ function SlideTraction({ index }) {
           <span data-wipe style={{ '--reveal-delay': '500ms', color: 'var(--amber)' }}>Already signed.</span>
         </div>
 
-        {/* Partner cards — 2-up grid */}
-        <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, maxWidth: 900 }}>
-          {partners.map((p, i) => (
-            <div
-              key={p.name}
-              data-reveal
-              style={{
-                '--reveal-delay': `${800 + i * 160}ms`,
-                '--reveal-y': '24px',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(242,237,228,0.12)',
-                padding: '32px 28px',
-                display: 'flex', flexDirection: 'column', gap: 12,
-              }}
-            >
-              <div className="serif" style={{ fontSize: 44, lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--bone)' }}>
-                {p.name}
+        {/* Partner cards — two-column layout: signed left, in-conversation right */}
+        <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: '55% 40%', columnGap: '5%' }}>
+
+          {/* Left: signed cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+            {partners.map((p, i) => (
+              <div
+                key={p.name}
+                data-reveal
+                style={{
+                  '--reveal-delay': `${800 + i * 160}ms`,
+                  '--reveal-y': '24px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(242,237,228,0.12)',
+                  padding: '32px 28px',
+                  display: 'flex', flexDirection: 'column', gap: 12,
+                }}
+              >
+                <div className="serif" style={{ fontSize: 44, lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--bone)' }}>
+                  {p.name}
+                </div>
+                <div style={{ fontSize: 18, color: 'var(--bone-2)', fontWeight: 300 }}>
+                  {p.kind}
+                </div>
+                <div className="mono" style={{
+                  fontSize: 11, letterSpacing: '0.22em', color: 'var(--amber)',
+                  border: '1px solid rgba(220,38,38,0.4)',
+                  padding: '6px 12px', alignSelf: 'flex-start', marginTop: 8,
+                }}>
+                  {p.stage}
+                </div>
               </div>
-              <div style={{ fontSize: 18, color: 'var(--bone-2)', fontWeight: 300 }}>
-                {p.kind}
-              </div>
-              <div className="mono" style={{
-                fontSize: 11, letterSpacing: '0.22em', color: 'var(--amber)',
-                border: '1px solid rgba(220,38,38,0.4)',
-                padding: '6px 12px', alignSelf: 'flex-start', marginTop: 8,
-              }}>
-                {p.stage}
-              </div>
+            ))}
+          </div>
+
+          {/* Right: in conversation */}
+          <div style={{ borderLeft: '1px solid rgba(255,255,255,0.08)', paddingLeft: 48 }}>
+            <div className="mono" data-reveal style={{ '--reveal-delay': '1400ms', fontSize: 11, letterSpacing: 3, color: 'var(--amber)', opacity: 0.7, marginBottom: 28 }}>
+              IN CONVERSATION
             </div>
-          ))}
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', marginBottom: 28 }} />
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+              {[
+                { name: 'Selldorf Architects',              desc: 'NYC · Gallery & Museum Practice',         delay: 1600 },
+                { name: 'Arquitectonica',                   desc: 'NYC + Miami · Mixed-Use & High-Rise',     delay: 1750 },
+                { name: 'FXCollaborative',                  desc: 'NYC · Civic & Institutional',             delay: 1900 },
+                { name: 'Notre Dame School of Architecture', desc: 'Academic Partner · Traditional & Classical', delay: 2050 },
+              ].map(({ name, desc, delay }) => (
+                <div key={name} data-reveal style={{ '--reveal-delay': `${delay}ms`, '--reveal-y': '16px' }}>
+                  <div className="serif" style={{ fontSize: 20, fontWeight: 500, color: 'var(--bone)', marginBottom: 4 }}>
+                    {name}
+                  </div>
+                  <div className="mono" style={{ fontSize: 13, fontWeight: 300, color: 'rgba(242,237,228,0.45)', letterSpacing: 1 }}>
+                    {desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mono" data-reveal style={{ '--reveal-delay': '2300ms', marginTop: 32, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.06)', fontSize: 12, letterSpacing: 2, color: 'rgba(242,237,228,0.3)' }}>
+              4 FIRMS · CONVERSATIONS ACTIVE
+            </div>
+          </div>
         </div>
 
         {/* Stats strip — pushed to bottom */}
